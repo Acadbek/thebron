@@ -1,9 +1,27 @@
-import path from "path"
+import { defineConfig } from 'vite'
 import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import UnoCSS from 'unocss/vite'
+import presetAttributify from '@unocss/preset-attributify'
+// import presetIcons from '@unocss/preset-icons'
+import presetUno from '@unocss/preset-uno'
+import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx'
+import path from 'path'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    UnoCSS({
+      presets: [
+        presetUno(),
+        presetAttributify()
+      ],
+      transformers: [
+        transformerAttributifyJsx({
+          blocklist: [/text-[a-zA-Z]*/, 'text-5xl']
+        })
+      ],
+    })
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
