@@ -6,6 +6,7 @@ import { DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/co
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import globus from '@/assets/icons/globus.svg'
+import logo from '@/assets/icons/logo.svg'
 
 const Header = () => {
   const { i18n } = useTranslation();
@@ -17,14 +18,9 @@ const Header = () => {
   };
 
   return (
-    <nav border py-2 flex items-center justify-between>
+    <nav flex py="34px" items-center justify-between>
       <div>
-        <ModeToggle />
-      </div>
-      <div flex gap-4>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/news'>News</NavLink>
-        <NavLink to='/login'>Login</NavLink>
+        <img width={106} height={34} src={logo} alt="LOGO" />
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

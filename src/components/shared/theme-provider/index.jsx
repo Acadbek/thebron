@@ -6,7 +6,7 @@ const ThemeProviderContext = createContext();
 export function ThemeProvider({
   children,
   defaultTheme = "system",
-  storageKey = "vite-ui-theme",
+  storageKey = "the-bron-theme",
   ...props
 }) {
   const [theme, setTheme] = useState(
