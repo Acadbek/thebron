@@ -1,37 +1,89 @@
-import { useTranslation } from 'react-i18next';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
-import img from '@/assets/images/main-bg.png'
+import img1 from '@/assets/images/main-bg.png'
 import Autoplay from "embla-carousel-autoplay"
 import HeaderButton from '@/components/shared/header-button/button';
 import pilotIcon from '@/assets/icons/pilot.svg'
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import filterIcon from '@/assets/icons/filter.svg'
+import searchIcon from '@/assets/icons/search.svg'
+import img from '@/assets/images/image.png'
 import '@/styles/index.css'
-
+import { Input } from '@/components/ui/input';
+import Card from "@/components/shared/card";
+import { useLazyGetResortsQuery } from "@/features/resort";
+import { useEffect } from "react";
 
 const Home = () => {
+  const [getResorts, { data, isLoading }] = useLazyGetResortsQuery()
   const caroulselData = [
     {
       title: 'For the first rented house',
-      img: img,
+      img: img1,
       percent: '10%'
     },
     {
       title: 'For the first rented house',
-      img: img,
+      img: img1,
       percent: '20%'
     },
     {
       title: 'For the first rented house',
-      img: img,
+      img: img1,
       percent: '30%'
     },
   ]
+
+  useEffect(() => {
+    getResorts()
+  }, [])
+
+  // const data = [
+  //   {
+  //     img,
+  //     title: 'Отель Узбекистан',
+  //     description: 'Расстояние: 2.8 km от цетра',
+  //     date: '10-12 марта',
+  //     price: '125 000 cум',
+  //     time: 'ночь'
+  //   },
+  //   {
+  //     img,
+  //     title: 'Отель Узбекистан',
+  //     description: 'Расстояние: 2.8 km от цетра',
+  //     date: '10-12 марта',
+  //     price: '125 000 cум',
+  //     time: 'ночь'
+  //   },
+  //   {
+  //     img,
+  //     title: 'Отель Узбекистан',
+  //     description: 'Расстояние: 2.8 km от цетра',
+  //     date: '10-12 марта',
+  //     price: '125 000 cум',
+  //     time: 'ночь'
+  //   },
+  //   {
+  //     img,
+  //     title: 'Отель Узбекистан',
+  //     description: 'Расстояние: 2.8 km от цетра',
+  //     date: '10-12 марта',
+  //     price: '125 000 cум',
+  //     time: 'ночь'
+  //   },
+  //   // {
+  //   //   img,
+  //   //   title: 'Отель Узбекистан',
+  //   //   description: 'Расстояние: 2.8 km от цетра',
+  //   //   date: '10-12 марта',
+  //   //   price: '125 000 cум',
+  //   //   time: 'ночь'
+  //   // },
+  // ]
 
   const buttons = [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
@@ -70,7 +122,22 @@ const Home = () => {
           <img src={filterIcon} alt="" />
         </Button>
       </div>
-    </div>
+      <div border-b mt="44px"></div>
+      <div text="58px" relative flex justify-center items-center w="810px" mx-auto>
+        <Input mt="60px" max-w="810px" h="80px" className="rounded-full px-[28px]" placeholder="Поиск направлений" />
+        <div cursor-pointer absolute right="8px" flex top="68px" items-center justify-center bg="#03559E" w="64px" h="64px" className='rounded-full'>
+          <img src={searchIcon} alt="" />
+        </div>
+      </div>
+      <div container mx-auto>
+        <h2 text="28px" not-italic font-semibold leading-9 mt="60px" mb-8>Дачные дома</h2>
+        <div grid grid-cols-4 gap="82px">
+          {data?.results?.map(item => (
+            <Card key={item.id} item={item} />
+          ))}
+        </div>
+      </div>
+    </div >
   )
 }
 
