@@ -2,7 +2,7 @@ import { AuthLayout, HomeLayout } from "@/layouts"
 import { Home, News, Login } from "./lazy"
 import { Routes, Route } from "react-router-dom"
 import { Suspense } from "react"
-
+import Details from "@/pages/home/details/index"
 const Router = () => {
   return (
     <>
@@ -29,6 +29,8 @@ const Router = () => {
           } />
         </Route>
       </Routes>
+
+      <Details/>
     </>
   )
 }

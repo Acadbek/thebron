@@ -14,6 +14,7 @@ import filterIcon from '@/assets/icons/filter.svg'
 import '@/styles/index.css'
 
 
+
 const Home = () => {
   const caroulselData = [
     {
@@ -70,6 +71,7 @@ const Home = () => {
           <img src={filterIcon} alt="" />
         </Button>
       </div>
+      
     </div>
   )
 }
