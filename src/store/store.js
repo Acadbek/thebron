@@ -8,7 +8,7 @@ export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     // user: userReducer,
-    // routes : routesReducer
+    // routes : routesReducer 
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(baseApi.middleware),
 })
