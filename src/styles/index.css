@@ -7,6 +7,15 @@ nav {
   padding: 0 24px;
 }
 
+/* .container-main {
+  max-width: 1651px !important;
+  margin: 0 auto !important;
+} */
+
+.embla {
+  display: none;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
