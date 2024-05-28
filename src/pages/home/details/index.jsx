@@ -28,6 +28,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import ScrollToTop from '@/components/ScrollToTop';
+import { YMaps, Map, Placemark } from "react-yandex-maps";
 
 const DetailsPage = () => {
   const { id } = useParams()
@@ -48,6 +50,7 @@ const DetailsPage = () => {
 
   return (
     <div w="90%" max-w="1800px" mx-auto mt-0 px-6>
+      <ScrollToTop />
       Details
       <div>
         <h6 text="28px">{resort?.name}</h6>
@@ -133,7 +136,9 @@ const DetailsPage = () => {
             <CarouselContent mt="40px">
               {resort?.images?.map((item, index) => (
                 <CarouselItem key={index} className="basis-1/2">
-                  <img object-cover height={264} src={item?.img} alt="Home img" />
+                  <div h="264px" w="">
+                    <img object-cover w-full h-full src={item?.img} alt="Home img" />
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -233,8 +238,14 @@ const DetailsPage = () => {
           </Card>
         </div>
       </div>
-    </div>
+      <div>
+        <YMaps query={{ apikey: 'YOUR_API_KEY' }}>
+          <Map defaultState={{ center: [55.76, 37.64], zoom: 10 }} style={{ width: '100%', height: '400px' }} />
+        </YMaps>
+      </div>
+    </div >
   )
 }
 
 export default DetailsPage
+// [41.31208994430632, 69.2825451321499]
