@@ -92,25 +92,25 @@ const DetailsPage = () => {
         <h6 text="28px">{resort?.name}</h6>
         <div grid grid-cols-2 gap-2>
           <div w-full>
-            <img h="416px" object-cover w-full src={resort.images[0].img} alt="" />
+            <img h="416px" object-cover w-full src={resort?.images[0]?.img} alt="" />
           </div>
           <div w-full h="300px">
             <div grid grid-cols-2 gap-2>
               <div flex flex-col gap-2 w-full h="300px">
                 <div w-full h="208px">
-                  <img h="208px" object-cover w-full src={resort.images[1].img} alt="" />
+                  <img h="208px" object-cover w-full src={resort?.images[1]?.img} alt="" />
                 </div>
                 <div w-full h="">
-                  <img h="199px" object-cover w-full src={resort.images[2].img} alt="" />
+                  <img h="199px" object-cover w-full src={resort?.images[2]?.img} alt="" />
                 </div>
                 <div w-full h="300px"></div>
               </div>
               <div flex flex-col gap-2 w-full h="300px">
                 <div w-full h="300px">
-                  <img h="208px" object-cover w-full src={resort.images[3].img} alt="" />
+                  <img h="208px" object-cover w-full src={resort?.images[3]?.img} alt="" />
                 </div>
                 <div w-full h="300px">
-                  <img h="199px" object-cover w-full src={resort.images[3].img} alt="" />
+                  <img h="199px" object-cover w-full src={resort?.images[3]?.img} alt="" />
                 </div>
               </div>
               <div></div>
