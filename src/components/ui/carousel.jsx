@@ -190,4 +190,4 @@ const CarouselNext = React.forwardRef(({ className, variant = "secondary", size 
 })
 CarouselNext.displayName = "CarouselNext"
 
-export { Carousel, CarouselContent, CarouselItem, CarouselNext };
+export { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious };
