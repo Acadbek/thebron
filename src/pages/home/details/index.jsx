@@ -29,20 +29,56 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import ScrollToTop from '@/components/ScrollToTop';
-import { YMaps, Map, Placemark } from "react-yandex-maps";
+import { YMaps, Map } from "react-yandex-maps";
+import ReviewCard from '@/components/shared/review-card';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 const DetailsPage = () => {
   const { id } = useParams()
   const { data: resort } = useGetResortByIDQuery(id)
   const textRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
-  const [date, setDate] = React.useState({
-    from: new Date(2022, 0, 20),
-    to: addDays(new Date(2022, 0, 20), 20),
-  })
-  useEffect(() => {
-    // getResort()
-  }, [])
+  const [date, setDate] = React.useState({ from: new Date(2022, 0, 20), to: addDays(new Date(2022, 0, 20), 20) })
+  const [ageCount, setAge] = useState(0)
+  const [childCount, setChildCount] = useState(0)
+  const [babies, setBabies] = useState(0)
+  const [pets, setPets] = useState(0)
+
+  const reviews = [
+    {
+      img: 'https://randomuser.me/api/portraits/lego/0.jpg',
+      name: 'Sven',
+      location: 'Германия',
+      date: 'август 2023 г. ',
+      term: 'Срок аренды - Около недели',
+      title: 'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. C',
+    },
+    {
+      img: 'https://randomuser.me/api/portraits/lego/0.jpg',
+      name: 'Sven',
+      location: 'Германия',
+      date: 'август 2023 г. ',
+      term: 'Срок аренды - Около недели',
+      title: 'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. C',
+    },
+    {
+      img: 'https://randomuser.me/api/portraits/lego/0.jpg',
+      name: 'Sven',
+      location: 'Германия',
+      date: 'август 2023 г. ',
+      term: 'Срок аренды - Около недели',
+      title: 'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. C',
+    },
+    {
+      img: 'https://randomuser.me/api/portraits/lego/0.jpg',
+      name: 'Sven',
+      location: 'Германия',
+      date: 'август 2023 г. ',
+      term: 'Срок аренды - Около недели',
+      title: 'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. C',
+    }
+  ]
 
   const toggleReadMore = () => {
     setExpanded(!expanded);
@@ -143,7 +179,7 @@ const DetailsPage = () => {
               ))}
             </CarouselContent>
           </Carousel>
-          <div flex gap="30px" mt="40px">
+          <div flex gap="30px" my="60px">
             <Calendar
               mode="single"
               selected={date}
@@ -205,18 +241,76 @@ const DetailsPage = () => {
                 </Popover>
               </div>
               <CardDescription mt-2 mb-1>Для кого</CardDescription>
-              <Select>
-                <SelectTrigger className="w-full bt-none">
-                  <SelectValue placeholder="1 гость" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>гость</SelectLabel>
-                    <SelectItem value="apple">2 гость</SelectItem>
-                    <SelectItem value="banana">3 гость</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <Popover >
+                <PopoverTrigger asChild>
+                  <Button w-full flex items-center justify-between variant="outline">
+                    1 гость
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.692 7.94254L10.442 14.1925C10.384 14.2506 10.3151 14.2967 10.2392 14.3282C10.1633 14.3597 10.082 14.3758 9.99986 14.3758C9.91772 14.3758 9.8364 14.3597 9.76052 14.3282C9.68465 14.2967 9.61572 14.2506 9.55767 14.1925L3.30767 7.94254C3.1904 7.82526 3.12451 7.6662 3.12451 7.50035C3.12451 7.3345 3.1904 7.17544 3.30767 7.05816C3.42495 6.94088 3.58401 6.875 3.74986 6.875C3.91571 6.875 4.07477 6.94088 4.19205 7.05816L9.99986 12.8668L15.8077 7.05816C15.8657 7.00009 15.9347 6.95403 16.0105 6.9226C16.0864 6.89117 16.1677 6.875 16.2499 6.875C16.332 6.875 16.4133 6.89117 16.4892 6.9226C16.565 6.95403 16.634 7.00009 16.692 7.05816C16.7501 7.11623 16.7962 7.18517 16.8276 7.26104C16.859 7.33691 16.8752 7.41823 16.8752 7.50035C16.8752 7.58247 16.859 7.66379 16.8276 7.73966C16.7962 7.81553 16.7501 7.88447 16.692 7.94254Z" fill="#343330" />
+                    </svg>
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-[400px]">
+                  <div className="grid gap-4">
+                    <div className="space-y-2">
+                      <h4 className="font-medium leading-none">Гости</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Если вы везёте с собой больше 2 питомцев,
+                        обязательно обсудите это с хозяином.
+                      </p>
+                    </div>
+                    <div flex items-center justify-between>
+                      <p flex justify-center flex-col>
+                        <span text-base not-italic font-bold leading-6>Взрослые</span>
+                        <span text="14px" not-italic font-normal leading-6>От 13 лет</span>
+                      </p>
+                      <div flex items-center gap="12px">
+                        <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setAge((prev) => prev - 1)}>-</Button>
+                        <span text-center text-xl not-italic font-medium leading-6>{ageCount}</span>
+                        <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setAge((prev) => prev + 1)}>+</Button>
+                      </div>
+                    </div>
+                    <div flex items-center justify-between>
+                      <p flex justify-center flex-col>
+                        <span text-base not-italic font-bold leading-6>Дети</span>
+                        <span text="14px" not-italic font-normal leading-6>2-12 лет</span>
+                      </p>
+                      <div flex items-center gap="12px">
+                        <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setChildCount((prev) => prev - 1)}>-</Button>
+                        <span text-center text-xl not-italic font-medium leading-6>{childCount}</span>
+                        <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setChildCount((prev) => prev + 1)}>+</Button>
+                      </div>
+                    </div>
+                    <div flex items-center justify-between>
+                      <p flex justify-center flex-col>
+                        <span text-base not-italic font-bold leading-6>Младенцы</span>
+                        <span text="14px" not-italic font-normal leading-6>Младше 2 </span>
+                      </p>
+                      <div flex items-center gap="12px">
+                        <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setBabies((prev) => prev - 1)}>-</Button>
+                        <span text-center text-xl not-italic font-medium leading-6>{babies}</span>
+                        <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setBabies((prev) => prev + 1)}>+</Button>
+                      </div>
+                    </div>
+                    <div flex items-center justify-between>
+                      <p flex justify-center flex-col>
+                        <span text-base not-italic font-bold leading-6>Домашние животные</span>
+                        <span text="14px" not-italic font-normal leading-6>Младше 2</span>
+                      </p>
+                      <div flex items-center gap="12px">
+                        <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setPets((prev) => prev - 1)}>-</Button>
+                        <span text-center text-xl not-italic font-medium leading-6>{pets}</span>
+                        <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setPets((prev) => prev + 1)}>+</Button>
+                      </div>
+                    </div>
+                  </div>
+                  <div w="100%" h="1px" bg="#EDEDED" my=""></div>
+                  <div flex items-center justify-between>
+                    <Button variant="ghost" underline>Отменить</Button>
+                    <Button>Сохранить</Button>
+                  </div>
+                </PopoverContent>
+              </Popover>
               <Button w-full mt="24px">Submit</Button>
               <ul>
                 <li flex items-center justify-between mt="32px">
@@ -239,11 +333,17 @@ const DetailsPage = () => {
         </div>
       </div>
       <div>
-        <YMaps query={{ apikey: 'YOUR_API_KEY' }}>
+        {/* <YMaps query={{ apikey: 'YOUR_API_KEY' }}>
           <Map defaultState={{ center: [55.76, 37.64], zoom: 10 }} style={{ width: '100%', height: '400px' }} />
-        </YMaps>
+        </YMaps> */}
       </div>
-    </div >
+      <div grid grid-cols-2 gap="28px">
+        {reviews?.map(review => (
+          <ReviewCard item={review} />
+        ))}
+      </div>
+      <Button variant="outline">Показать все отзывы(23)</Button>
+    </div>
   )
 }
 

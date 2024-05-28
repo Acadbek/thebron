@@ -6,17 +6,12 @@ import {
 import img1 from '@/assets/images/main-bg.png'
 import Autoplay from "embla-carousel-autoplay"
 import HeaderButton from '@/components/shared/header-button/button';
-// import pilotIcon from '@/assets/icons/pilot.svg'
 import { Pilot } from "@/assets/icons";
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-
-// import filterIcon from '@/assets/icons/filter.svg'
-// import searchIcon from '@/assets/icons/search.svg'
 import { Filter } from "@/assets/icons";
 import { Search } from "@/assets/icons";
 
-import img from '@/assets/images/image.png'
 import '@/styles/index.css'
 import { Input } from '@/components/ui/input';
 import Card from "@/components/shared/card";
