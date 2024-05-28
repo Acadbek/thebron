@@ -1,12 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-// import img1 from '@/assets/images/image1.png'
-// import img2 from '@/assets/images/image2.png'
-// import userImg from '@/assets/images/userImg.png'
-// import starIcon from '@/assets/icons/starIcon.svg'
-// import wifiIcon from '@/assets/icons/wifiIcon.svg'
-// import DoorOpenIcon from '@/assets/icons/DoorOpenIcon.svg'
-// import CalendarBlankIcon from '@/assets/icons/CalendarBlankIcon.svg'
-// import CaretRightIcon from '@/assets/icons/CaretRightIcon.svg'
 import { useGetResortByIDQuery } from '@/features/resort'
 import { useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -17,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
 import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
 import {
@@ -36,7 +28,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Label } from '@/components/ui/label';
 
 const DetailsPage = () => {
   const { id } = useParams()
@@ -147,6 +138,20 @@ const DetailsPage = () => {
               ))}
             </CarouselContent>
           </Carousel>
+          <div flex gap="30px" mt="40px">
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={setDate}
+              className="rounded-md"
+            />
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={setDate}
+              className="rounded-md"
+            />
+          </div>
         </div>
 
         <div sticky top-8>

@@ -43,49 +43,6 @@ const Home = () => {
     getResorts()
   }, [])
 
-  // const data = [
-  //   {
-  //     img,
-  //     title: 'Отель Узбекистан',
-  //     description: 'Расстояние: 2.8 km от цетра',
-  //     date: '10-12 марта',
-  //     price: '125 000 cум',
-  //     time: 'ночь'
-  //   },
-  //   {
-  //     img,
-  //     title: 'Отель Узбекистан',
-  //     description: 'Расстояние: 2.8 km от цетра',
-  //     date: '10-12 марта',
-  //     price: '125 000 cум',
-  //     time: 'ночь'
-  //   },
-  //   {
-  //     img,
-  //     title: 'Отель Узбекистан',
-  //     description: 'Расстояние: 2.8 km от цетра',
-  //     date: '10-12 марта',
-  //     price: '125 000 cум',
-  //     time: 'ночь'
-  //   },
-  //   {
-  //     img,
-  //     title: 'Отель Узбекистан',
-  //     description: 'Расстояние: 2.8 km от цетра',
-  //     date: '10-12 марта',
-  //     price: '125 000 cум',
-  //     time: 'ночь'
-  //   },
-  //   // {
-  //   //   img,
-  //   //   title: 'Отель Узбекистан',
-  //   //   description: 'Расстояние: 2.8 km от цетра',
-  //   //   date: '10-12 марта',
-  //   //   price: '125 000 cум',
-  //   //   time: 'ночь'
-  //   // },
-  // ]
-
   const buttons = [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 
   return (
@@ -130,7 +87,7 @@ const Home = () => {
           <img src={searchIcon} alt="" />
         </div>
       </div>
-      <div container mx-auto>
+      <div w="90%" max-w="1800px" mx-auto mt-0 px-6>
         <h2 text="28px" not-italic font-semibold leading-9 mt="60px" mb-8>Дачные дома</h2>
         <div grid grid-cols-4 gap="82px">
           {data?.results?.map(item => (

@@ -5,7 +5,6 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { Toggle } from "@/components/ui/toggle"
-import heart from '@/assets/icons/Heart.svg'
 
 const Card = ({ item }) => {
   return (
@@ -17,15 +16,17 @@ const Card = ({ item }) => {
           </g>
         </svg>
       </Toggle>
-      <Carousel>
+      {/* <Carousel>
         <CarouselContent>
           <CarouselItem key={item.id}>
-            <CarouselContent>
-              <img width={390} height={390} object-cover src={item?.images[0]?.img} alt="" />
-            </CarouselContent>
+            <CarouselContent> */}
+      <div h="390px">
+        <img rounded="20px" w="390px" object-cover h-full width={390} src={item?.images[0]?.img} alt="" />
+      </div>
+      {/* </CarouselContent>
           </CarouselItem>
         </CarouselContent>
-      </Carousel>
+      </Carousel> */}
       <h2 text-xl not-italic font-bold leading-7 mt-4>{item.name}</h2>
       <p text="#7A7A7A" text-lg not-italic font-normal leading-6 mt-1>{item?.location_name}</p>
       <time text="#7A7A7A" text-lg not-italic font-normal leading-6 mt-1 datetime="">{item?.availability_dates[0]?.date}</time>

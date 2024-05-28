@@ -7,9 +7,8 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import globus from '@/assets/icons/globus.svg'
 import logo from '@/assets/icons/logo.svg'
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog } from "@/components/ui/dialog";
 import AuthModal from "../auth-modal";
-
 
 const Header = () => {
   const { i18n, t } = useTranslation();
@@ -26,9 +25,9 @@ const Header = () => {
 
   return (
     <nav flex py="34px" items-center justify-between>
-      <div>
+      <NavLink to='/'>
         <img width={106} height={34} src={logo} alt="LOGO" />
-      </div>
+      </NavLink>
       <div flex items-center gap-6>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
