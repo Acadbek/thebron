@@ -4,22 +4,25 @@ import { baseApi } from '../api'
 
 const ResortExtendedEndoints = baseApi.injectEndpoints({
   endpoints: build => ({
+
     getResorts: build.query({
       query: params => ({
         url: EndpointResort.RESORT,
         method: 'GET',
         params,
       }),
-
       providesTags: [RTKTagNames.RESORT],
     }),
-    getResortById: build.query({
+
+    getResortByID: build.query({
       query: id => ({
         url: `${EndpointResort.RESORT}${id}/`,
         method: 'GET',
       }),
       providesTags: [RTKTagNames.RESORT],
     }),
+
+
     // addClient: build.mutation({
     //   query: body => ({
     //     url: EndpointNameUsers.CLIENTS,
@@ -104,5 +107,5 @@ export const {
   // useLazyGetClientCommentsQuery,
   // useUpdateClientMutation,
   useLazyGetResortsQuery,
-  useLazyGetResortByIdQuery
+  useGetResortByIDQuery
 } = ResortExtendedEndoints
