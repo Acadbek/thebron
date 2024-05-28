@@ -1,20 +1,14 @@
-import { DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { DialogContent } from "@/components/ui/dialog"
 import AppleIcon from "@/assets/icons/appleIcon.svg";
 import GoogleIcon from "@/assets/icons/googleIcon.svg";
 import FaceboolIcon from "@/assets/icons/facebookIcon.svg";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 
+import InputMask from 'react-input-mask';
+import React from "react";
 const AuthModal = () => {
+
+  const [phone, setPhone] = React.useState('');
+
   return (
     <DialogContent flex items-center justify-center flex-col max-w="530px" px="24px">
       <div text="center">
@@ -25,26 +19,12 @@ const AuthModal = () => {
         <div className="grid gap-4 py-4">
           <div>
             <div >
-              <Select>
-                <SelectTrigger py="26px" rounded-none >
-                  <h6 text="16px" font="700" leading="24px">Uzb <span text="16px" font="400" leading="24px">(+998)</span> </h6>
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>North America</SelectLabel>
-                    <SelectItem value="est">Eastern Standard Time (EST)</SelectItem>
-                    <SelectItem value="cst">Central Standard Time (CST)</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-              {/* <Input type="email" placeholder="Номер телефона" py="26px" font="400" text="16px0" leading="24px" rounded-none /> */}
-              {/* <InputMask
-                mask="+\9\98 (99) 999-99-99"
+              <InputMask
+                mask="+\9\98 99 999-99-99"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              >
-                {(inputProps) => <input {...inputProps} type="email" placeholder="Номер телефона" />}
-              </InputMask> */}
+                onChange={(e) => setPhone(e.target.value)} font="400" text="18px" leading="24px" p="16px" rounded="10px" w-full border outline-none >
+                {(inputProps) => <input {...inputProps} type="text" placeholder="Номер телефона" />}
+              </InputMask>
             </div>
             <p text="#454545" font="400" leading="20px" mt="11px" className=" text-[14px]"  >
               Мы позвоним вам или отправим SMS, чтобы подтвердить номер телефона. Применяются стандартные условия вашего
@@ -53,9 +33,9 @@ const AuthModal = () => {
           </div>
           <button my="20px" text="#fff" text-sm bg="#03559E" rounded="10px" py="12px">Продолжить</button>
           <div flex items-center gap="16px" w-full>
-            <div w="100%" h="0.5px" bg="#666666"></div>
+            <div w="100%" h="0.5px" bg="#E0E0E0"></div>
             <h6 text="#666666" text-xs font="400" leading="24px">или</h6>
-            <div w="100%" h="0.5px" bg="#666666" ></div>
+            <div w="100%" h="0.5px" bg="#E0E0E0" ></div>
           </div>
 
           <div flex flex-col gap="16px">
