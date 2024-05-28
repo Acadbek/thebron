@@ -1,7 +1,10 @@
 import { DialogContent } from "@/components/ui/dialog"
-import AppleIcon from "@/assets/icons/appleIcon.svg";
-import GoogleIcon from "@/assets/icons/googleIcon.svg";
-import FaceboolIcon from "@/assets/icons/facebookIcon.svg";
+// import AppleIcon from "@/assets/icons/appleIcon.svg";
+// import GoogleIcon from "@/assets/icons/googleIcon.svg";
+// import FaceboolIcon from "@/assets/icons/facebookIcon.svg";
+import { AppleIcon } from "@/assets/icons";
+import { GoogleIcon } from "@/assets/icons";
+import { FacebookIcon } from "@/assets/icons";
 
 import InputMask from 'react-input-mask';
 import React from "react";
@@ -40,15 +43,15 @@ const AuthModal = () => {
 
           <div flex flex-col gap="16px">
             <div flex items-center gap="4px" rounded="8px" w="100%" border p="12px" >
-              <img src={GoogleIcon} alt="" w="20px" h="20px" />
+              <GoogleIcon />
               <h6 text-xs font-bold leading="24px" w-full text="center">С помощью Google</h6>
             </div>
             <div flex items-center gap="4px" rounded="8px" w="100%" border p="12px" >
-              <img src={FaceboolIcon} alt="" w="20px" h="20px" />
+              <FacebookIcon />
               <h6 text-xs font-bold leading="24px" w-full text="center">С помощью Facebook</h6>
             </div>
             <div flex items-center gap="4px" rounded="8px" w="100%" border p="12px" >
-              <img src={AppleIcon} alt="" w="24px" h="24px" />
+              <AppleIcon />
               <h6 text-xs font-bold leading="24px" w-full text="center">Продолжить с Apple</h6>
             </div>
           </div>

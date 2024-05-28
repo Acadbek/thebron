@@ -5,10 +5,10 @@ import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import { DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import globus from '@/assets/icons/globus.svg'
-import logo from '@/assets/icons/logo.svg'
+import { Logo } from "@/assets/icons";
 import { Dialog } from "@/components/ui/dialog";
 import AuthModal from "../auth-modal";
+import { Globus } from "@/assets/icons";
 
 const Header = () => {
   const { i18n, t } = useTranslation();
@@ -26,13 +26,13 @@ const Header = () => {
   return (
     <nav flex py="34px" items-center justify-between>
       <NavLink to='/'>
-        <img width={106} height={34} src={logo} alt="LOGO" />
+        <Logo/>
       </NavLink>
       <div flex items-center gap-6>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button flex flex-col variant="ghost" size="icon">
-              <img src={globus} alt="" />
+              <img src={<Globus/>} alt="" />
               {currentLang}
             </Button>
           </DropdownMenuTrigger>
