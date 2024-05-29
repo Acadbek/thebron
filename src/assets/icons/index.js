@@ -3,7 +3,7 @@ import { CalendarBlankIcon } from "./CalendarBlankIcon";
 import { CaretRightIcon } from "./CaretRightIcon";
 import { Chayxana } from "./chayxana";
 import { Dacha } from "./dacha";
-import { Djostilk } from "./djostik";
+import { Djostik } from "./djostik";
 import { DoorOpenIcon } from "./DoorOpenIcon";
 import { FacebookIcon } from "./facebookIcon";
 import { FilterIcon } from "./filter";
@@ -23,13 +23,15 @@ import { StarIcon } from "./starIcon";
 import { StarIcon2 } from "./starIcon2";
 import { VectorIcon } from "./VectorIcon";
 import { WifiIcon } from "./wifiIcon";
+import { Building } from "./Building";
 export {
     AppleIcon,
     CalendarBlankIcon,
     CaretRightIcon,
     Chayxana,
     Dacha,
-    Djostilk,
+    Djostik,
+    Building,
     DoorOpenIcon,
     FacebookIcon,
     FilterIcon,
