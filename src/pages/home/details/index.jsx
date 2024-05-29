@@ -1,7 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useGetResortByIDQuery } from '@/features/resort'
 import { useParams } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'; 7
+import { StarIcon } from '@/assets/icons';
+import { WifiIcon } from '@/assets/icons';
+import { CalendarBlankIcon } from '@/assets/icons';
+import { DoorOpenIcon } from '@/assets/icons';
+import userImg from "@/assets/images/userImg.png"
+
+
 import {
   Carousel,
   CarouselContent,
@@ -76,7 +83,7 @@ const DetailsPage = () => {
             <p flex gap-3 items-center><span>{resort?.amenities[0]?.name}</span> <span>{resort?.amenities[1]?.name}</span> <span>{resort?.amenities[2]?.name}</span> <span>{resort?.amenities[3]?.name}</span> </p>
             <div flex items-center gap="8px">
               <span flex items-center gap="8px" font="500">
-                {/* <img src={starIcon} alt="icon" /> */}
+                <StarIcon />
                 4.6
               </span>
               <p text="16px" font="700">24 отзыва</p>
@@ -86,7 +93,7 @@ const DetailsPage = () => {
           <div w="100%" h="1px" bg="#EDEDED" my="40px"></div>
 
           <div flex items-center gap="16px">
-            {/* <img src={userImg} alt="user img" w="60px" h="60px" /> */}
+            <img src={userImg} alt="user img" w="60px" h="60px" />
             <div>
               <h6 text="18px" font="700">Хозяин: Grigory Ishuk</h6>
               <p text="16px" mt-1 font="400px">5 лет принимает гостей</p>
@@ -97,18 +104,18 @@ const DetailsPage = () => {
 
           <div flex flex-col gap="16px">
             <div flex items-center gap="16px">
-              {/* <img src={wifiIcon} alt="wifi icon" w="24px" h="24px" /> */}
+              <WifiIcon />
               <div>
                 <h6 text="18px" font="700">Быстрый Wi-Fi </h6>
                 <p mt-1 text="16px" font="400">На скорости 235 Мбит/с вы можете принимать видео звонки и транслировать видео для всей группы</p>
               </div>
             </div>
             <div flex items-center gap="16px">
-              {/* <img src={CalendarBlankIcon} alt="" w="24px" h="24px" /> */}
+              <CalendarBlankIcon />
               <h6 text="18px" font="700">Беспоатная отмена в течение 48 часов</h6>
             </div>
             <div flex items-center gap="16px">
-              {/* <img src={DoorOpenIcon} alt="" w="24px" h="24px" /> */}
+              <DoorOpenIcon />
               <div>
                 <h6 text="18px" font="700">Самостоятельное прибытие </h6>
                 <p mt-1 text="16px" font="400">Вы заселитесь самостоятельно на двери умный звонок</p>

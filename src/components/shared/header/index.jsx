@@ -32,7 +32,7 @@ const Header = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button flex flex-col variant="ghost" size="icon">
-              <img src={<Globus/>} alt="" />
+              <Globus/>
               {currentLang}
             </Button>
           </DropdownMenuTrigger>

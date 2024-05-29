@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import { Suspense } from "react"
 import DetailsPage from "@/pages/home/details"
 import Loader from "@/components/shared/loader"
+import Nmadur from "@/components/shared/nmadur/index"
 
 const Router = () => {
   return (
@@ -32,6 +33,9 @@ const Router = () => {
           } />
         </Route>
       </Routes>
+            
+      <Nmadur/>
+
     </>
   )
 }

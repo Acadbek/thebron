@@ -23,6 +23,7 @@ import { StarIcon } from "./starIcon";
 import { StarIcon2 } from "./starIcon2";
 import { VectorIcon } from "./VectorIcon";
 import { WifiIcon } from "./wifiIcon";
+import { CeaningIcon } from "./CeaningIcon";
 export {
     AppleIcon,
     CalendarBlankIcon,
@@ -49,4 +50,5 @@ export {
     StarIcon2,
     VectorIcon,
     WifiIcon,
+    CeaningIcon
 }

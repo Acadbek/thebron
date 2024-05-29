@@ -6,17 +6,11 @@ import {
 import img1 from '@/assets/images/main-bg.png'
 import Autoplay from "embla-carousel-autoplay"
 import HeaderButton from '@/components/shared/header-button/button';
-// import pilotIcon from '@/assets/icons/pilot.svg'
-import { Pilot } from "@/assets/icons";
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-
-// import filterIcon from '@/assets/icons/filter.svg'
-// import searchIcon from '@/assets/icons/search.svg'
 import { Filter } from "@/assets/icons";
 import { Search } from "@/assets/icons";
 
-import img from '@/assets/images/image.png'
 import '@/styles/index.css'
 import { Input } from '@/components/ui/input';
 import Card from "@/components/shared/card";
@@ -79,7 +73,6 @@ const Home = () => {
             <>
               <HeaderButton >click</HeaderButton>
             </>
-
           ))}
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
@@ -92,7 +85,6 @@ const Home = () => {
       <div text="58px" relative flex justify-center items-center w="810px" mx-auto>
         <Input mt="60px" max-w="810px" h="80px" className="rounded-full px-[28px]" placeholder="Поиск направлений" />
         <div cursor-pointer absolute right="8px" flex top="68px" items-center justify-center bg="#03559E" w="64px" h="64px" className='rounded-full'>
-          {/* <img src={searchIcon} alt="" /> */}
           <Search />
         </div>
       </div>

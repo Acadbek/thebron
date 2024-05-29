@@ -26,4 +26,11 @@ const Login = lazy(() =>
     .catch(handleCatchChunkError)
 );
 
+const Nmadur = lazy(() =>
+  import("@/pages")
+    .then(({ Nmadur }) => ({ default: Nmadur })
+      .catch(handleCatchChunkError)
+    ))
+
+
 export { Home, News, Login }
