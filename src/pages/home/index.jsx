@@ -6,6 +6,7 @@ import {
 import img1 from '@/assets/images/main-bg.png'
 import Autoplay from "embla-carousel-autoplay"
 import HeaderButton from '@/components/shared/header-button/button';
+import { Pilot } from "@/assets/icons";
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Filter } from "@/assets/icons";
