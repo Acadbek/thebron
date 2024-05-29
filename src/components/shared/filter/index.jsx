@@ -37,7 +37,7 @@ const Filter = () => {
 
 
   return (
-    <Sheet p-0 open={true}>
+    <Sheet p-0>
       <SheetTrigger asChild>
         <Button flex items-center gap-2 variant="outline">Фильтр <FilterIcon /></Button>
       </SheetTrigger>
