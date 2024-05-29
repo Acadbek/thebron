@@ -6,7 +6,7 @@ import { Dacha } from "./dacha";
 import { Djostilk } from "./djostik";
 import { DoorOpenIcon } from "./DoorOpenIcon";
 import { FacebookIcon } from "./facebookIcon";
-import { Filter } from "./filter";
+import { FilterIcon } from "./filter";
 import { Kino } from "./kino";
 import { Globus } from "./globus";
 import { GoogleIcon } from "./googleIcon";
@@ -33,7 +33,7 @@ export {
     Djostilk,
     DoorOpenIcon,
     FacebookIcon,
-    Filter,
+    FilterIcon,
     Kino,
     Globus,
     GoogleIcon,

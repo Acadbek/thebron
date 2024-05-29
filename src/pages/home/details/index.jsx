@@ -50,6 +50,7 @@ const DetailsPage = () => {
   const [childCount, setChildCount] = useState(0)
   const [babies, setBabies] = useState(0)
   const [pets, setPets] = useState(0)
+  const [guestModal, setGuestModal] = useState(false)
 
   const reviews = [
     {
@@ -93,9 +94,8 @@ const DetailsPage = () => {
   return (
     <div w="90%" max-w="1800px" mx-auto mt-0 px-6>
       <ScrollToTop />
-      Details
       <div>
-        <h6 text="28px">{resort?.name}</h6>
+        <h6 text="28px" not-italic font-semibold leading-9 mb="40px">{resort?.name}</h6>
         <div grid grid-cols-2 gap-2>
           <div w-full>
             <img h="416px" object-cover w-full src={resort?.images[0]?.img} alt="" />
@@ -129,7 +129,11 @@ const DetailsPage = () => {
         <div col-span-8>
           <div flex flex-col gap="16px">
             <h6 text="24px" font="700">{resort?.name}</h6>
-            <p flex gap-3 items-center><span>{resort?.amenities[0]?.name}</span> <span>{resort?.amenities[1]?.name}</span> <span>{resort?.amenities[2]?.name}</span> <span>{resort?.amenities[3]?.name}</span> </p>
+            <p flex gap-3 items-center><span>{resort?.amenities[0]?.name}</span>
+              <span>{resort?.amenities[1]?.name}</span>
+              <span>{resort?.amenities[2]?.name}</span>
+              <span>{resort?.amenities[3]?.name}</span>
+            </p>
             <div flex items-center gap="8px">
               <span flex items-center gap="8px" font="500">
                 <StarIcon />
@@ -211,21 +215,21 @@ const DetailsPage = () => {
           </div>
         </div>
         <div col-span-4>
-          <div sticky top-8>
+          <div w="530px" sticky top-8>
             <Card>
               <CardHeader>
                 <p text-2xl py-0 font-bold>{resort?.daily_price}сум <span text-2xl font-normal>ночь</span></p>
               </CardHeader>
               <CardContent>
                 <CardDescription mb-1>Прибытие | Выезд</CardDescription>
-                <div className={cn("grid gap-2")}>
+                <div w-full>
                   <Popover w-full>
                     <PopoverTrigger asChild>
                       <Button
                         id="date"
                         variant={"outline"}
                         className={cn(
-                          "w-[300px] justify-start text-left font-normal",
+                          "w-full justify-start text-left font-normal",
                           !date && "text-muted-foreground"
                         )}
                       >
@@ -245,7 +249,7 @@ const DetailsPage = () => {
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0 mr-[50px]" align="start">
-                      <Calendar
+                      <Calendar w-full
                         initialFocus
                         mode="range"
                         defaultMonth={date?.from}
@@ -257,7 +261,7 @@ const DetailsPage = () => {
                   </Popover>
                 </div>
                 <CardDescription mt-2 mb-1>Для кого</CardDescription>
-                <Popover >
+                <Popover>
                   <PopoverTrigger asChild>
                     <Button w-full flex items-center justify-between variant="outline">
                       1 гость
@@ -322,7 +326,7 @@ const DetailsPage = () => {
                     </div>
                     <div w="100%" h="1px" bg="#EDEDED" my=""></div>
                     <div flex items-center justify-between>
-                      <Button variant="ghost" underline>Отменить</Button>
+                      <Button onClick={() => setGuestModal((prev) => prev = false)} variant="ghost" underline>Отменить</Button>
                       <Button>Сохранить</Button>
                     </div>
                   </PopoverContent>
