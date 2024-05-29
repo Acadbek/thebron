@@ -123,7 +123,11 @@ const DetailsPage = () => {
         <div col-span-8>
           <div flex flex-col gap="16px">
             <h6 text="24px" font="700">{resort?.name}</h6>
-            <p flex gap-3 items-center><span>{resort?.amenities[0]?.name}</span> <span>{resort?.amenities[1]?.name}</span> <span>{resort?.amenities[2]?.name}</span> <span>{resort?.amenities[3]?.name}</span> </p>
+            <p flex gap-3 items-center><span>{resort?.amenities[0]?.name}</span>
+              <span>{resort?.amenities[1]?.name}</span>
+              <span>{resort?.amenities[2]?.name}</span>
+              <span>{resort?.amenities[3]?.name}</span>
+            </p>
             <div flex items-center gap="8px">
               <span flex items-center gap="8px" font="500">
                 {/* <img src={starIcon} alt="icon" /> */}
