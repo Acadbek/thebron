@@ -2,7 +2,7 @@ import Loader from "@/components/shared/loader";
 import { lazy } from "react";
 
 const handleCatchChunkError = () => {
-  window.location.reload();
+  // window.location.reload();
   return { default: Loader };
 };
 

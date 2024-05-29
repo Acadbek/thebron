@@ -7,17 +7,16 @@ import img1 from '@/assets/images/main-bg.png'
 import Autoplay from "embla-carousel-autoplay"
 import HeaderButton from '@/components/shared/header-button/button';
 import { Pilot } from "@/assets/icons";
-import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { Filter } from "@/assets/icons";
+import { FilterIcon } from "@/assets/icons";
 import { Search } from "@/assets/icons";
-
+import Filter from '@/components/shared/filter'
 import '@/styles/index.css'
-import { Input } from '@/components/ui/input';
 import Card from "@/components/shared/card";
 import { useLazyGetResortsQuery } from "@/features/resort";
 import { useEffect } from "react";
-
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 const Home = () => {
   const [getResorts, { data, isLoading }] = useLazyGetResortsQuery()
@@ -52,7 +51,7 @@ const Home = () => {
           align: "start", loop: true, jump: false
         }}
         plugins={[
-          Autoplay({ delay: 4000 })
+          Autoplay({ delay: 6000 })
         ]}
         w-full mt="40px">
         <CarouselContent>
@@ -74,14 +73,10 @@ const Home = () => {
             <>
               <HeaderButton >click</HeaderButton>
             </>
-
           ))}
           <ScrollBar orientation="horizontal" />
         </ScrollArea>
-        <Button flex items-center justify-center gap-2 variant="outline">
-          Фильтр
-          <Filter />
-        </Button>
+        <Filter />
       </div>
       <div border-b mt="44px"></div>
       <div text="58px" relative flex justify-center items-center w="810px" mx-auto>
