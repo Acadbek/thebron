@@ -1,8 +1,4 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import img1 from '@/assets/images/main-bg.png'
 import Autoplay from "embla-carousel-autoplay"
 import HeaderButton from '@/components/shared/header-button/button';
@@ -19,7 +15,7 @@ import { ToggleGroup } from "@/components/ui/toggle-group";
 
 const Home = () => {
   const [getResorts, { data, isLoading }] = useLazyGetResortsQuery()
-  const [defaultColor, setDefaultColor] = useState('#03559E')
+  const [activeMenu, setActiveMenu] = useState(null);
   const caroulselData = [
     {
       title: 'For the first rented house',
@@ -45,90 +41,70 @@ const Home = () => {
   const menus = [
     {
       id: 1,
-      title: 'Отели',
-      icon: <Building fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Все',
+      // icon: <Building fillColor={activeMenu === 1 ? 'white' : '#03559E'} />, // This icon is commented out; uncomment if needed
     },
     {
       id: 2,
-      title: 'Дача',
-      icon: <Dacha fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Отели',
+      icon: <Building fillColor={activeMenu === 2 ? 'white' : '#03559E'} />,
     },
     {
       id: 3,
-      title: 'Лагерь',
-      icon: <Lager fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Дача',
+      icon: <Dacha fillColor={activeMenu === 3 ? 'white' : '#03559E'} />,
     },
     {
       id: 4,
-      title: 'Санатория',
-      icon: <Sanatoriya fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Лагерь',
+      icon: <Lager fillColor={activeMenu === 4 ? 'white' : '#03559E'} />,
     },
     {
       id: 5,
-      title: 'Ресторан',
-      icon: <Restoran fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Санатория',
+      icon: <Sanatoriya fillColor={activeMenu === 5 ? 'white' : '#03559E'} />,
     },
     {
       id: 6,
-      title: 'Чайхана',
-      icon: <Chayxana fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Ресторан',
+      icon: <Restoran fillColor={activeMenu === 6 ? 'white' : '#03559E'} />,
     },
     {
       id: 7,
-      title: 'Кино',
-      icon: <Kino fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Чайхана',
+      icon: <Chayxana fillColor={activeMenu === 7 ? 'white' : '#03559E'} />,
     },
     {
       id: 8,
-      title: 'Game club',
-      icon: <Djostik fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Кино',
+      icon: <Kino fillColor={activeMenu === 8 ? 'white' : '#03559E'} />,
     },
     {
       id: 9,
-      title: 'Самолет',
-      icon: <Pilot fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Game club',
+      icon: <Djostik fillColor={activeMenu === 9 ? 'white' : '#03559E'} />,
     },
     {
       id: 10,
-      title: 'Поезд',
-      icon: <Poezd fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Самолет',
+      icon: <Pilot fillColor={activeMenu === 10 ? 'white' : '#03559E'} />,
     },
     {
       id: 11,
-      title: 'Дача',
-      icon: <Dacha fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
+      title: 'Поезд',
+      icon: <Poezd fillColor={activeMenu === 11 ? 'white' : '#03559E'} />,
     },
-    {
-      id: 12,
-      title: 'Дача',
-      icon: <Dacha fillColor={defaultColor} />,
-      isActive: false, // Add an `isActive` property to track selection
-    },
-  ]
+  ];
 
-  const filter = (menuId) => {
+  const handleMenuClick = (menuId) => {
+    setActiveMenu(menuId);
   };
 
   return (
     <div>
       <Carousel
-        opts={{
-          align: "start", loop: true, jump: false
-        }}
-        plugins={[
-          Autoplay({ delay: 6000 })
-        ]}
+        opts={{ align: "start", loop: true, jump: false }}
+        plugins={[Autoplay({ delay: 6000 })]}
         w-full mt="40px">
         <CarouselContent>
           {caroulselData?.map((item, index) => (
@@ -142,16 +118,18 @@ const Home = () => {
           ))}
         </CarouselContent>
       </Carousel>
-      <div flex items-center mt="44px" gap-4>
-        <Button>Все</Button>
-        <ToggleGroup type="single" w-full flex justify-center items-center whitespace-nowrap rounded-md>
+      <div flex items-center gap-4 justify-center mt="44px" >
+        <ToggleGroup
+          defaultValue="1"
+          type="single"
+          flex justify-center whitespace-nowrap header-menus >
           {menus?.map((item) => (
             <HeaderButton
-              key={item.id}
-              onClick={() => filter(item.id)}
-              value={item.id}
-              ariaLabel={`Selected-${item.title}`}
-              icon={item.icon}
+              key={item?.id}
+              onClick={() => handleMenuClick(item?.id)}
+              value={item?.id}
+              ariaLabel={`Selected-${item?.title}`}
+              icon={item?.icon}
             >
               {item?.title}
             </HeaderButton>
