@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <nav flex py="34px" items-center justify-between>
       <NavLink to='/'>
-        <Logo/>
+        <Logo />
       </NavLink>
       <div flex items-center gap-6>
         <DropdownMenu>
@@ -42,6 +42,9 @@ const Header = () => {
             </DropdownMenuItem>
             <DropdownMenuItem onClick={(e) => changeLanguage(e, "ru")}>
               Русский
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={(e) => changeLanguage(e, "en")}>
+              English
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
