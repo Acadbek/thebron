@@ -8,7 +8,6 @@ import { CalendarBlankIcon } from '@/assets/icons';
 import { DoorOpenIcon } from '@/assets/icons';
 import userImg from "@/assets/images/userImg.png"
 
-
 import {
   Carousel,
   CarouselContent,
@@ -361,6 +360,7 @@ const DetailsPage = () => {
         ))}
       </div>
       <Button variant="outline">Показать все отзывы(23)</Button>
+      
     </div>
   )
 }
