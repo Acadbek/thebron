@@ -2,7 +2,7 @@ import Loader from "@/components/shared/loader";
 import { lazy } from "react";
 
 const handleCatchChunkError = () => {
-  // window.location.reload();
+  window.location.reload();
   return { default: Loader };
 };
 
@@ -12,6 +12,11 @@ const Home = lazy(() =>
     .catch(handleCatchChunkError)
 );
 
+const Bron = lazy(() =>
+  import("@/pages")
+    .then(({ Bron }) => ({ default: Bron }))
+    .catch(handleCatchChunkError)
+);
 
 const News = lazy(() =>
   import("@/pages")
@@ -26,12 +31,5 @@ const Login = lazy(() =>
     .catch(handleCatchChunkError)
 );
 
-const Nmadur = lazy(() =>
-  import("@/pages")
-    .then(({ Nmadur }) => ({ default: Nmadur })
-      .catch(handleCatchChunkError)
-    ))
-
-
-export { Home, News, Login }
+export { Home, News, Login, Bron }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useGetResortByIDQuery } from '@/features/resort'
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button'; 7
 import { StarIcon } from '@/assets/icons';
 import { WifiIcon } from '@/assets/icons';
@@ -28,18 +28,26 @@ import ScrollToTop from '@/components/ScrollToTop';
 import { YMaps, Map } from "react-yandex-maps";
 import ReviewCard from '@/components/shared/review-card';
 import { Skeleton } from '@/components/ui/skeleton';
+import formatNumber from '@/lib/format'
+import { useDispatch, useSelector } from 'react-redux';
+import { pay } from '@/store/bron.slice';
 
 const DetailsPage = () => {
   const { id } = useParams()
   const { data: resort, isLoading } = useGetResortByIDQuery(id)
   const textRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
-  const [date, setDate] = React.useState({ from: new Date(2022, 0, 20), to: addDays(new Date(2022, 0, 20), 20) })
+  const [date, setDate] = React.useState({ from: new Date(2024, 0, 1), to: addDays(new Date(2024, 0, 1), 1) })
   const [ageCount, setAge] = useState(0)
   const [childCount, setChildCount] = useState(0)
   const [babies, setBabies] = useState(0)
   const [pets, setPets] = useState(0)
   const [guestModal, setGuestModal] = useState(false)
+  const [bronDay, setBronDay] = useState(false)
+  const { bron } = useSelector((store) => store)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const reviews = [
     {
@@ -76,19 +84,37 @@ const DetailsPage = () => {
     }
   ]
 
+  useEffect(() => {
+    setBronDay((format(date?.from, 't') - format(date?.to, 't')) / 86400);
+  }, [date])
+
   const toggleReadMore = () => {
     setExpanded(!expanded);
   };
+
+  const totalAmount = () => {
+    return resort?.daily_price * (-bronDay)
+  }
+
+  const startBron = () => {
+    new Promise((res, rej) => {
+      dispatch(pay({ data: resort, amount: totalAmount() + 120000 }))
+      res()
+    }).then(() => {
+      navigate(`${location.pathname}/bron`)
+      console.log(bron);
+    }).catch(() => {
+    })
+  }
 
   return (
     <div w="90%" max-w="1800px" mx-auto mt-0 px-6>
       <ScrollToTop />
       <div>
         {
-          isLoading ?
-            <Skeleton h="40px" w='400px' mb='35px' />
-            :
-            <h6 text="28px" not-italic font-semibold leading-9 mb="40px">{resort?.name}</h6>
+          isLoading
+            ? <Skeleton h="40px" w='400px' mb='35px' />
+            : <h6 text="28px" not-italic font-semibold leading-9 mb="40px">{resort?.name}</h6>
         }
         <div grid grid-cols-2 gap-2>
           {
@@ -141,7 +167,7 @@ const DetailsPage = () => {
                         <img h="208px" object-cover w-full rounded="8px" src={resort?.images[3]?.img} alt="" />
                       </div>
                       <div w-full h="300px">
-                        <img h="199px" object-cover w-full rounded="8px" src={resort?.images[3]?.img} alt="" />
+                        <img h="199px" object-cover w-full rounded="8px" src={resort?.images[4]?.img} alt="" />
                       </div>
                     </div>
                     <div></div>
@@ -245,7 +271,7 @@ const DetailsPage = () => {
           <div w="530px" sticky top-8>
             <Card>
               <CardHeader>
-                <p text-2xl py-0 font-bold>{resort?.daily_price}сум <span text-2xl font-normal>ночь</span></p>
+                <p text-2xl py-0 font-bold>{formatNumber(resort?.daily_price)} сум <span text-2xl font-normal>ночь</span></p>
               </CardHeader>
               <CardContent>
                 <CardDescription mb-1>Прибытие | Выезд</CardDescription>
@@ -264,8 +290,8 @@ const DetailsPage = () => {
                         {date?.from ? (
                           date.to ? (
                             <>
-                              {format(date.from, "LLL dd, y")} -{" "}
-                              {format(date.to, "LLL dd, y")}
+                              {format(date.from, "dd LLL, y")} -{" "}
+                              {format(date.to, "dd LLL, y")}
                             </>
                           ) : (
                             format(date.from, "LLL dd, y")
@@ -358,11 +384,11 @@ const DetailsPage = () => {
                     </div>
                   </PopoverContent>
                 </Popover>
-                <Button w-full mt="24px">Submit</Button>
+                <Button onClick={startBron} w-full mt="24px">Reserve</Button>
                 <ul>
                   <li flex items-center justify-between mt="32px">
-                    <span underline>125 000сум x5 </span>
-                    <span>625 000сум</span>
+                    <span underline> {formatNumber(resort?.daily_price)} сум x{-bronDay} </span>
+                    <span>{formatNumber(totalAmount())} сум</span>
                   </li>
                   <li flex items-center justify-between mt="16px">
                     <span underline>1Плата за уборку</span>
@@ -374,7 +400,7 @@ const DetailsPage = () => {
                   </li>
                 </ul>
                 <div w="100%" h="1px" bg="#EDEDED" mb="24px" mt="32px"></div>
-                <p text-2xl not-italic font-semibold leading-5 flex items-center justify-between>Всего(без учета) <span text-right text-2xl not-italic font-bold leading-5>745 000сум</span></p>
+                <p text-2xl not-italic font-semibold leading-5 flex items-center justify-between>Всего(без учета) <span text-right text-2xl not-italic font-bold leading-5>{formatNumber(totalAmount() + 120000)}сум</span></p>
               </CardContent>
             </Card>
           </div>

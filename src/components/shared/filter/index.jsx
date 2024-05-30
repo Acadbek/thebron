@@ -434,7 +434,7 @@ const Filter = () => {
               7+
             </ToggleGroupItem>
           </ToggleGroup>
-          <div border-b w-full></div>
+          <div border-b w-full mt="40px"></div>
           <AccordionFilter data={amenities} title='Удобства' />
         </div>
         <DialogFooter p-4 border-t sticky bottom-0 bg-white w-full className="sm:justify-start">
