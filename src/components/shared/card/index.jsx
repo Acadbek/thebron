@@ -5,6 +5,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { Toggle } from "@/components/ui/toggle"
+import format from "@/lib/format"
 
 const Card = ({ item }) => {
   return (
@@ -31,7 +32,7 @@ const Card = ({ item }) => {
       <p text="#7A7A7A" text-lg not-italic font-normal leading-6 mt-1>{item?.location_name}</p>
       <time text="#7A7A7A" text-lg not-italic font-normal leading-6 mt-1 datetime="">{item?.availability_dates[0]?.date}</time>
       <div flex items-center gap-2>
-        <p text-2xl not-italic font-bold leading-9 mt-1>{item?.daily_price}</p>
+        <p text-2xl not-italic font-bold leading-9 mt-1>{format(item?.daily_price)}</p>
         <span text="#7A7A7A" text-lg not-italic font-normal leading-6 mt-1>ночь</span>
       </div>
     </NavLink>
