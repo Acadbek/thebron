@@ -28,8 +28,8 @@ module.exports = {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "accordion-down": "accordion-down 1.8s ease-out",
+        "accordion-up": "accordion-up 1.8s ease-out",
       },
       colors: {
         border: "hsl(var(--border))",

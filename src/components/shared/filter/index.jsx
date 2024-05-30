@@ -20,6 +20,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { AccordionFilter } from "../accordion"
 
 const Filter = () => {
   const [date, setDate] = useState({ from: new Date(2022, 0, 20), to: addDays(new Date(2022, 0, 20), 20) })
@@ -34,6 +35,110 @@ const Filter = () => {
   const handeleMinRange = (e) => {
     setMinVal(e)
   }
+
+  const amenities = [
+    {
+      title: 'Wifi',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Cтиральная машина',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Кондиционер',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Рабочая зона',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Фен',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Кухня',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Сушильная машина',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Отопление',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Телевизор',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Утюг',
+      checked: false,
+      category: 1
+    },
+    {
+      title: 'Бассейн',
+      checked: false,
+      category: 2
+    },
+    {
+      title: 'Бесплатная парковка',
+      checked: false,
+      category: 2
+    },
+    {
+      title: 'Кроватка',
+      checked: false,
+      category: 2
+    },
+    {
+      title: 'Спортзал',
+      checked: false,
+      category: 2
+    },
+    {
+      title: 'Возможность покурить',
+      checked: false,
+      category: 2
+    },
+    {
+      title: 'Джакузи',
+      checked: false,
+      category: 2
+    },
+    {
+      title: 'Зарядка электромобиля',
+      checked: false,
+      category: 2
+    },
+    {
+      title: 'Кровать кинг-сайз',
+      checked: false,
+      category: 2
+    },
+    {
+      title: 'Зона барбекю',
+      checked: false,
+      category: 2
+    },
+    {
+      title: 'Камин',
+      checked: false,
+      category: 2
+    }
+  ]
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -329,9 +434,8 @@ const Filter = () => {
               7+
             </ToggleGroupItem>
           </ToggleGroup>
-          <div border-b w-full my="40px"></div>
-          <DialogTitle>Удобства</DialogTitle>
-          <p text-lg not-italic font-normal mt-2 leading-6>Самое необходимое</p>
+          <div border-b w-full></div>
+          <AccordionFilter data={amenities} title='Удобства' />
         </div>
         <DialogFooter p-4 border-t sticky bottom-0 bg-white w-full className="sm:justify-start">
           <div flex justify-between w-full>

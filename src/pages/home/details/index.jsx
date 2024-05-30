@@ -24,24 +24,14 @@ import {
 } from "@/components/ui/popover"
 import { addDays, format } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import ScrollToTop from '@/components/ScrollToTop';
 import { YMaps, Map } from "react-yandex-maps";
 import ReviewCard from '@/components/shared/review-card';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const DetailsPage = () => {
   const { id } = useParams()
-  const { data: resort } = useGetResortByIDQuery(id)
+  const { data: resort, isLoading } = useGetResortByIDQuery(id)
   const textRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const [date, setDate] = React.useState({ from: new Date(2022, 0, 20), to: addDays(new Date(2022, 0, 20), 20) })
@@ -94,33 +84,71 @@ const DetailsPage = () => {
     <div w="90%" max-w="1800px" mx-auto mt-0 px-6>
       <ScrollToTop />
       <div>
-        <h6 text="28px" not-italic font-semibold leading-9 mb="40px">{resort?.name}</h6>
+        {
+          isLoading ?
+            <Skeleton h="40px" w='400px' mb='35px' />
+            :
+            <h6 text="28px" not-italic font-semibold leading-9 mb="40px">{resort?.name}</h6>
+        }
         <div grid grid-cols-2 gap-2>
-          <div w-full>
-            <img h="416px" object-cover w-full src={resort?.images[0]?.img} alt="" />
-          </div>
-          <div w-full h="300px">
-            <div grid grid-cols-2 gap-2>
-              <div flex flex-col gap-2 w-full h="300px">
-                <div w-full h="208px">
-                  <img h="208px" object-cover w-full src={resort?.images[1]?.img} alt="" />
-                </div>
-                <div w-full h="">
-                  <img h="199px" object-cover w-full src={resort?.images[2]?.img} alt="" />
-                </div>
-                <div w-full h="300px"></div>
-              </div>
-              <div flex flex-col gap-2 w-full h="300px">
-                <div w-full h="300px">
-                  <img h="208px" object-cover w-full src={resort?.images[3]?.img} alt="" />
+          {
+            isLoading ?
+              <>
+                <div w-full>
+                  <Skeleton h="416px" w-full />
                 </div>
                 <div w-full h="300px">
-                  <img h="199px" object-cover w-full src={resort?.images[3]?.img} alt="" />
+                  <div grid grid-cols-2 gap-2>
+                    <div flex flex-col gap-2 w-full h="300px">
+                      <div w-full h="208px">
+                        <Skeleton h="208px" w-full />
+                      </div>
+                      <div w-full>
+                        <Skeleton h="199px" w-full />
+                      </div>
+                      <div w-full h="300px"></div>
+                    </div>
+                    <div flex flex-col gap-2 w-full h="300px">
+                      <div w-full h="300px">
+                        <Skeleton h="208px" w-full />
+                      </div>
+                      <div w-full h="300px">
+                        <Skeleton h="190px" w-full />
+                      </div>
+                    </div>
+                    <div></div>
+                  </div>
                 </div>
-              </div>
-              <div></div>
-            </div>
-          </div>
+              </>
+              :
+              <>
+                <div w-full>
+                  <img h="416px" rounded="8px" object-cover w-full src={resort?.images[0]?.img} alt="" />
+                </div>
+                <div w-full h="300px">
+                  <div grid grid-cols-2 gap-2>
+                    <div flex flex-col gap-2 w-full h="300px">
+                      <div w-full h="208px">
+                        <img h="208px" rounded="8px" object-cover w-full src={resort?.images[1]?.img} alt="" />
+                      </div>
+                      <div w-full>
+                        <img h="199px" object-cover rounded="8px" w-full src={resort?.images[2]?.img} alt="" />
+                      </div>
+                      <div w-full h="300px"></div>
+                    </div>
+                    <div flex flex-col gap-2 w-full h="300px">
+                      <div w-full h="300px">
+                        <img h="208px" object-cover w-full rounded="8px" src={resort?.images[3]?.img} alt="" />
+                      </div>
+                      <div w-full h="300px">
+                        <img h="199px" object-cover w-full rounded="8px" src={resort?.images[3]?.img} alt="" />
+                      </div>
+                    </div>
+                    <div></div>
+                  </div>
+                </div>
+              </>
+          }
         </div>
       </div>
 
