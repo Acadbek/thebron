@@ -101,7 +101,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <>
       <Carousel
         opts={{ align: "start", loop: true, jump: false }}
         plugins={[Autoplay({ delay: 6000 })]}
@@ -144,15 +144,15 @@ const Home = () => {
           <Search />
         </div>
       </div>
-      <div w="90%" max-w="1800px" mx-auto mt-0 px-6>
+      <div max-w="1800px" mx-auto>
         <h2 text="28px" font-semibold leading-9 mt="60px" mb-8>Дачные дома</h2>
-        <div grid grid-cols-4 gap="82px">
+        <div className="grid-container">
           {data?.results?.map(item => (
             <Card key={item.id} item={item} />
           ))}
         </div>
       </div>
-    </div >
+    </>
   )
 }
 

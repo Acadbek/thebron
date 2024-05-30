@@ -8,7 +8,7 @@ import { Toggle } from "@/components/ui/toggle"
 
 const Card = ({ item }) => {
   return (
-    <NavLink to={String(item.id)} w="390px">
+    <NavLink to={String(item.id)}>
       <Toggle aria-label="Toggle bold">
         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="Phosphor Icons / Heart">

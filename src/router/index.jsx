@@ -17,7 +17,7 @@ const Router = () => {
           } />
           <Route path=":id" element={<DetailsPage />} />
           <Route path="/news" element={
-            <Suspense>
+            <Suspense fallback={<Loader />}>
               <News />
             </Suspense>
           } />
@@ -26,7 +26,7 @@ const Router = () => {
       <Routes>
         <Route element={<AuthLayout />}>
           <Route path="/login" element={
-            <Suspense>
+            <Suspense fallback={<Loader />}>
               <Login />
             </Suspense>
           } />

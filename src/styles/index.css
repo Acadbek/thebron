@@ -16,6 +16,24 @@ nav {
   display: none;
 }
 
+.grid-container {
+  display: grid;
+  grid-gap: 20px;
+  margin: 20px;
+}
+
+@media (min-width: 1300px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1300px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
