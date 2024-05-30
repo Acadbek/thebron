@@ -14,8 +14,8 @@ const AuthModal = () => {
   const [phone, setPhone] = React.useState('');
 
   return (
-      <DialogContent flex items-center justify-center flex-col rounded="20px" w="343px"   className="sm:w-[349px]  xl:w-[530px]" >
-      <div text="center" >
+      <DialogContent flex items-center justify-center flex-col rounded="20px" w="343px"   className="sm:w-[349px]  xl:w-[530px] " >
+      <div text="center">
         <h6 font="600" text="26px" leading="30px" className=" sm:text-[20px] xl:text-3xl xl:not-italic xl:font-semibold xl:leading-9"  >Добро пожаловать в <span text="#03559E">theBron</span></h6>
         <p text='16px' font="500" leading="24px" mt="8px" className="sm-[18px] xl:text-[18px] xl:font-[500] leading-[24px]">Войдите или зарегистрируйтесь</p>
       </div>

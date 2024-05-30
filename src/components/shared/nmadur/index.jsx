@@ -38,9 +38,8 @@ const index = () => {
                     <li flex items-center gap="5px">2<Progress value={progress4} className="w-[100%]" /></li>
                 </ul>
             </div>
-
-            <div className='flex  items-center overflow-x-scroll scrollbar-none  gap-[24px] w-full sm:flex-wrap sm:justify-between  sm:gap-[30px]  xl:justify-between xl:gap-[39px] 2xl:justify-between 2xl:gap-[61px] '>
-                <div  className=' h-[176px] w-[1px] bg-[#D9D9D9] hidden sm:block md:block lg:block xl:block 2xl:block'  ></div>
+            <div className='flex  items-center overflow-x-scroll scrollbar-width-none  gap-[24px] w-full sm:flex-wrap sm:justify-between  sm:gap-[30px]  xl:justify-between xl:gap-[39px] 2xl:justify-between 2xl:gap-[61px] '>
+                <div  className=' h-[176px] w-[1px] bg-[#D9D9D9] hidden sm:block md:block lg:block xl:block 2xl:block'></div>
                 <div flex flex-col items-center flex-col-reverse  max-w="110px" gap="12px" sm:flex-col sm:gap="29px"  >
                     <h6 text-lg font-bold leading-5 text-left>Чистота</h6>
                     <p>4.7</p>
