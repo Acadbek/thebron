@@ -46,7 +46,7 @@ const customFetchBase = async (args, api, extraOptions) => {
         if (refreshResult.data) {
           result = await baseQuery(args, api, extraOptions)
         }
-      } finally {   
+      } finally {
         release()
       }
     } else {
@@ -54,6 +54,7 @@ const customFetchBase = async (args, api, extraOptions) => {
       result = await baseQuery(args, api, extraOptions)
     }
   }
+
   return result
 }
 
@@ -63,5 +64,3 @@ export const baseApi = createApi({
   tagTypes: Object.values(RTKTagNames),
   endpoints: () => ({}),
 })
-
-
