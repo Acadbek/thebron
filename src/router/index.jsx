@@ -18,6 +18,7 @@ const Router = () => {
 
           <Route path=":id" element={<DetailsPage />} />
 
+
           <Route path="/news" element={
             <Suspense fallback={<Loader />}>
               <News />
