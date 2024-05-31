@@ -1,5 +1,5 @@
 import { AuthLayout, HomeLayout } from "@/layouts"
-import { Home, News, Login, Bron } from "./lazy"
+import { Home, News, Login } from "./lazy"
 import { Routes, Route } from "react-router-dom"
 import { Suspense } from "react"
 import DetailsPage from "@/pages/home/details"
@@ -15,18 +15,10 @@ const Router = () => {
               <Home />
             </Suspense>
           } />
-
           <Route path=":id" element={<DetailsPage />} />
-
           <Route path="/news" element={
             <Suspense fallback={<Loader />}>
               <News />
-            </Suspense>
-          } />
-
-          <Route path=":id/bron" element={
-            <Suspense fallback={<Loader />}>
-              <Bron />
             </Suspense>
           } />
         </Route>
@@ -40,7 +32,6 @@ const Router = () => {
           } />
         </Route>
       </Routes>
-      
     </>
   )
 }
