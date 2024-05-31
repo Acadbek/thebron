@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useGetResortByIDQuery } from "@/features/resort";
 import formatNumber from "@/lib/format";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   Dialog,
@@ -13,33 +13,33 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import { useEffect, useRef, useState } from "react";
-import { Calendar } from "@/components/ui/calendar"
+import { Calendar } from "@/components/ui/calendar";
 import { addDays } from "date-fns";
 
 export const Bron = () => {
   const [date, setDate] = useState({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
-  })
-  const [openModal, setOpenModal] = useState(false)
-  const [chooseModal, setChooseModal] = useState(null)
-  const [ageCount, setAge] = useState(0)
-  const [childCount, setChildCount] = useState(0)
-  const [babies, setBabies] = useState(0)
-  const [pets, setPets] = useState(0)
-  const navigate = useNavigate();
+  });
+  const [openModal, setOpenModal] = useState(false);
+  const [chooseModal, setChooseModal] = useState(null);
+  const [ageCount, setAge] = useState(0);
+  const [childCount, setChildCount] = useState(0);
+  const [babies, setBabies] = useState(0);
+  const [pets, setPets] = useState(0);
+  const checkboxLabel = useRef();
+  const radioItem = useRef();
+  const radioItem2 = useRef();
+  const paymentRadio = useRef();
+  const paymentRadio2 = useRef();
+  const paymentRadio3 = useRef();
+  const paymentRadio4 = useRef();
+  const { id } = useParams();
+  const { data: resort } = useGetResortByIDQuery(id);
   const { bron } = useSelector((store) => store);
-  const {id} = useParams()
-  const { data: resort } = useGetResortByIDQuery(id)
-  const checkboxLabel = useRef()
-  const radioItem = useRef()
-  const radioItem2 = useRef()
-  const paymentRadio = useRef()
-  const paymentRadio2 = useRef()
-  const paymentRadio3 = useRef()
-  const paymentRadio4 = useRef()
+  const navigate = useNavigate();
 
   const handleBackClick = () => {
     navigate(-1);
@@ -48,7 +48,7 @@ export const Bron = () => {
   const handleModal = (e) => {
     setOpenModal(true)
     setChooseModal(e)
-  }
+  };
 
   const choosePaymentStatus = (e) => {
     const radioCheckboxes = document.querySelectorAll('.radio-checkbox');
@@ -59,18 +59,18 @@ export const Bron = () => {
   const choosePaymentProvider = (e) => {
     const paymentCheckboxes = document.querySelectorAll('.payment-radio-checkbox');
     paymentCheckboxes.forEach(checkbox => checkbox.classList.remove('border-primary'));
-    e.target.parentElement.classList.add('border-primary')
-  }
+    e.target.parentElement.classList.add('border-primary');
+  };
 
   useEffect(() => {
-    radioItem.current.parentElement.classList.add('border-black')
+    radioItem.current.parentElement.classList.add('border-black');
     radioItem.current.addEventListener('click', choosePaymentStatus);
     radioItem2.current.addEventListener('click', choosePaymentStatus);
     paymentRadio.current.addEventListener('click', choosePaymentProvider);
     paymentRadio2.current.addEventListener('click', choosePaymentProvider);
     paymentRadio3.current.addEventListener('click', choosePaymentProvider);
     paymentRadio4.current.addEventListener('click', choosePaymentProvider);
-  }, [])
+  }, []);
 
   return (
     <>

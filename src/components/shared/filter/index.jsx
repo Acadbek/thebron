@@ -21,6 +21,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { AccordionFilter } from "../accordion"
+import Nouislider from "nouislider-react";
+import "nouislider/distribute/nouislider.css";
+import formatNumber from '@/lib/format'
 
 const Filter = () => {
   const [date, setDate] = useState({ from: new Date(2022, 0, 20), to: addDays(new Date(2022, 0, 20), 20) })
@@ -31,10 +34,13 @@ const Filter = () => {
   const [babies, setBabies] = useState(0)
   const [pets, setPets] = useState(0)
   const [guestModal, setGuestModal] = useState(false)
+  const [range, setRange] = useState([200000, 1000000]);
 
-  const handeleMinRange = (e) => {
-    setMinVal(e)
-  }
+  const handleSlide = (value) => {
+    setRange([value[0], value[1]]);
+    console.log(range);
+
+  };
 
   const amenities = [
     {
@@ -147,6 +153,7 @@ const Filter = () => {
       <DialogContent className="p-0 overflow-y-auto" flex flex-col h="850px" min-w="780px">
         <DialogHeader sticky top-0 bg-white py-5 border-b flex justify-start items-center>
           <DialogTitle>Фильтры</DialogTitle>
+
         </DialogHeader>
         <div mt-4 mx-0 px="20px">
           <ToggleGroup defaultValue={'bold'} flex items-center className="gap-0" mx-0 w-full type="single">
@@ -268,33 +275,21 @@ const Filter = () => {
           <div border-b w-full my="40px"></div>
           <DialogTitle>Ценовой диапазон</DialogTitle>
           <p text-lg not-italic font-normal mt-2 leading-6>Цены за ночь без учета налогов и сборов</p>
-          <div relative w-full mt="30px">
-            <input
-              min={minVal}
-              maxLength={maxVal}
-              value={minVal}
-              onInput={(e) => handeleMinRange(e.target.value)}
-              type="range"
-              absolute appearance-none h-1 w-full bg="#011120"
-            // style={{ zIndex: minVal > max - 100 ? '5' : '3' }}
-            />
-            {/* <input
-              min={minVal}
-              maxLength={maxVal}
-              onInput={(e) => handeleMaxRange(e.target.value)}
-              type="range"
-              absolute appearance-none h-1 w-full bg="#011120"
-            // style={{ zIndex: maxVal < min + 100 ? '4' : '2' }}
-            /> */}
-          </div>
+          <Nouislider
+            onChange={handleSlide}
+            className="mt-[30px]"
+            range={{ min: 200000, max: 10000000 }}
+            start={range}
+            connect
+          />
           <div flex gap-4 mt="55px">
             <div w-full>
               <p className="text-[14px] mb-1" text="#A3A3A3" leading-4>Минимум</p>
-              <Input placeholder="200 000 сум" />
+              <Input onChange={(e) => setRange([e.target.value])} text='#0A0A0A' value={formatNumber(range[0])} placeholder="200 000 сум" />
             </div>
             <div w-full>
               <p className="text-[14px] mb-1" text-xs text="#A3A3A3" leading-4>Максимум</p>
-              <Input placeholder="1 200 000 сум" />
+              <Input onChange={(e) => setRange([range[0], e.target.value])} text='#0A0A0A' value={formatNumber(range[1])} placeholder="1 200 000 сум" />
             </div>
           </div>
           <p className="mt-[40px]">title</p>
