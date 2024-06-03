@@ -67,14 +67,14 @@ const Home = () => {
 
       <div className="flex items-center gap-4 justify-center mt-11">
         <ToggleGroup defaultValue="1" type="single" className="flex justify-center whitespace-nowrap header-menus">
-          {menus.map((item) => {
-            const IconComponent = item.icon;
+          {menus?.map((item) => {
+            const IconComponent = item?.icon;
             return (
               <HeaderButton
-                key={item.id}
-                onClick={() => handleMenuClick(item.id)}
-                value={item.id}
-                ariaLabel={`Selected-${item.title}`}
+                key={item?.id}
+                onClick={() => handleMenuClick(item?.id)}
+                value={item?.id}
+                ariaLabel={`Selected-${item?.title}`}
                 icon={<IconComponent fillColor={activeMenu === item.id ? activeIconColor : inActiveIconColor} />}
               >
                 {item.title}
@@ -98,7 +98,7 @@ const Home = () => {
         <h2 className="text-[28px] font-semibold leading-9 mt-15 mb-8">Дачные дома</h2>
         <div className="grid-container">
           {data?.results?.map((item) => (
-            <Card key={item.id} item={item} />
+            <Card key={item?.id} item={item} />
           ))}
         </div>
       </div>
