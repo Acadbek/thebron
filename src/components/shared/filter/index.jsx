@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/dialog"
 import { AccordionFilter } from "../accordion"
 import Nouislider from "nouislider-react";
-import "nouislider/distribute/nouislider.css";
 import formatNumber from '@/lib/format'
 
 const Filter = () => {
