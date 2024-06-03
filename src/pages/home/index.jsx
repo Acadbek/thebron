@@ -38,6 +38,9 @@ const Home = () => {
     getResorts()
   }, [])
 
+  const activeIconColor = '#03559E'
+  const inActiveIconColor = 'white'
+
   const menus = [
     {
       id: 1,
@@ -47,52 +50,52 @@ const Home = () => {
     {
       id: 2,
       title: 'Отели',
-      icon: <Building fillColor={activeMenu === 2 ? 'white' : '#03559E'} />,
+      icon: <Building fillColor={activeMenu === 2 ? inActiveIconColor : activeIconColor} />,
     },
     {
       id: 3,
       title: 'Дача',
-      icon: <Dacha fillColor={activeMenu === 3 ? 'white' : '#03559E'} />,
+      icon: <Dacha fillColor={activeMenu === 3 ? inActiveIconColor : activeIconColor} />,
     },
     {
       id: 4,
       title: 'Лагерь',
-      icon: <Lager fillColor={activeMenu === 4 ? 'white' : '#03559E'} />,
+      icon: <Lager fillColor={activeMenu === 4 ? inActiveIconColor : activeIconColor} />,
     },
     {
       id: 5,
       title: 'Санатория',
-      icon: <Sanatoriya fillColor={activeMenu === 5 ? 'white' : '#03559E'} />,
+      icon: <Sanatoriya fillColor={activeMenu === 5 ? inActiveIconColor : activeIconColor} />,
     },
     {
       id: 6,
       title: 'Ресторан',
-      icon: <Restoran fillColor={activeMenu === 6 ? 'white' : '#03559E'} />,
+      icon: <Restoran fillColor={activeMenu === 6 ? inActiveIconColor : activeIconColor} />,
     },
     {
       id: 7,
       title: 'Чайхана',
-      icon: <Chayxana fillColor={activeMenu === 7 ? 'white' : '#03559E'} />,
+      icon: <Chayxana fillColor={activeMenu === 7 ? inActiveIconColor : activeIconColor} />,
     },
     {
       id: 8,
       title: 'Кино',
-      icon: <Kino fillColor={activeMenu === 8 ? 'white' : '#03559E'} />,
+      icon: <Kino fillColor={activeMenu === 8 ? inActiveIconColor : activeIconColor} />,
     },
     {
       id: 9,
       title: 'Game club',
-      icon: <Djostik fillColor={activeMenu === 9 ? 'white' : '#03559E'} />,
+      icon: <Djostik fillColor={activeMenu === 9 ? inActiveIconColor : activeIconColor} />,
     },
     {
       id: 10,
       title: 'Самолет',
-      icon: <Pilot fillColor={activeMenu === 10 ? 'white' : '#03559E'} />,
+      icon: <Pilot fillColor={activeMenu === 10 ? inActiveIconColor : activeIconColor} />,
     },
     {
       id: 11,
       title: 'Поезд',
-      icon: <Poezd fillColor={activeMenu === 11 ? 'white' : '#03559E'} />,
+      icon: <Poezd fillColor={activeMenu === 11 ? inActiveIconColor : activeIconColor} />,
     },
   ];
 
