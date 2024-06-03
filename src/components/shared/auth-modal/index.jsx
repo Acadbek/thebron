@@ -1,11 +1,7 @@
 import { DialogContent } from "@/components/ui/dialog";
-// import AppleIcon from "@/assets/icons/appleIcon.svg";
-// import GoogleIcon from "@/assets/icons/googleIcon.svg";
-// import FaceboolIcon from "@/assets/icons/facebookIcon.svg";
 import { AppleIcon } from "@/assets/icons";
 import { GoogleIcon } from "@/assets/icons";
 import { FacebookIcon } from "@/assets/icons";
-import { X } from "lucide-react";
 import { Dialog } from "@/components/ui/dialog";
 import InputMask from 'react-input-mask';
 import React, { useState } from "react";
@@ -43,8 +39,7 @@ const AuthModal = ({ setIsOpen }) => {
         rounded="20px"
         w="343px"
         className="sm:w-[349px]  xl:w-[530px]"
-        XIcon={false}
-      >
+        XIcon={false}>
         <div text="center">
           <h6
             font="600"
@@ -81,8 +76,7 @@ const AuthModal = ({ setIsOpen }) => {
                 border
                 outline-none
                 sm-w="317px"
-                className="xl:w-[482px] xl:mt-[20px]"
-              >
+                className="xl:w-[482px] xl:mt-[20px]">
                 {(inputProps) => <input {...inputProps} type="text" placeholder="Номер телефона" />}
               </InputMask>
             </div>
@@ -93,8 +87,7 @@ const AuthModal = ({ setIsOpen }) => {
               font="400"
               leading="20px"
               mt="20px"
-              className=" text-[14px] sm:text-center  sm:text-[14px] xl:text-sm  xl:font-normal xl:leading-5 xl:text-start"
-            >
+              className=" text-[14px] sm:text-center  sm:text-[14px] xl:text-sm  xl:font-normal xl:leading-5 xl:text-start">
               Мы позвоним вам или отправим SMS, чтобы подтвердить номер телефона. Применяются стандартные условия вашего
               тарифа на прием сообщений и передачу данных. <span text-sm not-italic font-normal leading-5 underline> Политика конфиденциальности</span>
             </p>
@@ -109,8 +102,7 @@ const AuthModal = ({ setIsOpen }) => {
               rounded="10px"
               py="10px"
               className="sm:w-[317px] xl:w-full xl:py-[12px] xl:my-[20px]"
-              sm:mx-auto
-            >
+              sm:mx-auto>
               Продолжить
             </button>
 
@@ -126,17 +118,16 @@ const AuthModal = ({ setIsOpen }) => {
               gap="16px"
               mt="20px"
               w-full
-              className="sm:w-[317px] sm:mx-auto xl:w-[482px] xl:gap-[12px]"
-            >
-              <div flex items-center gap="4px" rounded="8px" w="100%" border p="10px">
+              className="sm:w-[317px] sm:mx-auto xl:w-[482px] xl:gap-[12px]">
+              <div cursor-pointer flex items-center gap="4px" rounded="8px" w="100%" border p="10px">
                 <GoogleIcon />
                 <h6 text-xs font="700" leading="20px" w-full text="center">С помощью Google</h6>
               </div>
-              <div flex items-center gap="4px" rounded="8px" w="100%" border p="10px">
+              <div cursor-pointer flex items-center gap="4px" rounded="8px" w="100%" border p="10px">
                 <FacebookIcon />
                 <h6 text-xs font="700" leading="20px" w-full text="center">С помощью Facebook</h6>
               </div>
-              <div flex items-center gap="4px" rounded="8px" w="100%" border p="10px">
+              <div cursor-pointer flex items-center gap="4px" rounded="8px" w="100%" border p="10px">
                 <AppleIcon />
                 <h6 text-xs font="700" leading="20px" w-full text="center">Продолжить с Apple</h6>
               </div>
@@ -146,7 +137,7 @@ const AuthModal = ({ setIsOpen }) => {
       </DialogContent>
 
       <Dialog open={openModal} onOpenChange={setOpenModal}>
-        <LoginAuthModal setOpenModal={setOpenModal} setIsOpen={setIsOpen}/>
+          <LoginAuthModal setOpenModal={setOpenModal} setIsOpen={setIsOpen}/>
       </Dialog>
     </div>
   );

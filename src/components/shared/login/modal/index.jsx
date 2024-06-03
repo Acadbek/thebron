@@ -10,10 +10,11 @@ import {
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useRef, useState } from "react";
+import CompliteModal from "@/components/shared/login/compliteModal/index"
 
 const AuthModal = ({ setOpenModal, setIsOpen }) => {
   const [chooseModal, setChooseModal] = useState(1);
-
+  const [openIsModal, setOpenIsModal] = useState(false);
   const handleModalChange = (value) => {
     setChooseModal(value);
   };
@@ -28,7 +29,11 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
     setOpenModal(false)
 
   }
-
+  const changeCompliteModal = () => {
+    setOpenIsModal(true);
+    setOpenModal(false)
+  }
+ 
   const [confirmationCode, setConfirmationCode] = useState(["", "", "", "", ""]);
   const inputRefs = useRef([]);
 
@@ -82,16 +87,14 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
 
             <p className="text-gray-600 text-center text-base">Если код не придет, то можно получить новый через 51 сек</p>
             <button
-              onClick={() => handleModalChange(1)}
-              className="mt-4 text-white bg-blue-600 w-full rounded-md py-2"
-            >
+              onClick={changeCompliteModal}
+              className="mt-4 text-white bg-blue-600 w-full rounded-md py-2">
               Продолжить
             </button>
 
             <p
               onClick={() => handleModalChange(2)}
-              className="mt-6 text-black text-center text-lg font-bold underline cursor-pointer"
-            >
+              className="mt-6 text-black text-center text-lg font-bold underline cursor-pointer">
               Другие варианты
             </p>
           </div>
@@ -154,6 +157,10 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
           </button>
         </DialogContent>
       )}
+
+      <Dialog open={openIsModal} onOpenChange={setOpenIsModal}>
+        <CompliteModal />
+      </Dialog>
     </div>
   );
 };

@@ -24,6 +24,7 @@ const Header = () => {
   const handleOpenModal = (e) => {
     e.preventDefault();
     setIsOpen(true)
+    
   };
 
   return (
@@ -56,7 +57,7 @@ const Header = () => {
           <Button variant="secondary" onClick={handleOpenModal}>
             {t('login')}
           </Button>
-          <AuthModal />
+          {/* <AuthModal /> */}
           <div className=" hidden">
             <AuthModal setIsOpen={setIsOpen} />
           </div>
