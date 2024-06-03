@@ -5,12 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-
-
-const index = () => {
-
-    
-
+const CompliteModal = () => {
     return (
         <div>
             <DialogContent XIcon={false} className="sm:w-[420px] sm:py-[24px] sm:px-[20px]">
@@ -28,7 +23,7 @@ const index = () => {
                     </div>
 
                     <div className='mt-[15px]'>
-                        <Input type="email" placeholder="Email" className="py-[25px]"  />
+                        <Input type="email" placeholder="Email" className="py-[25px]" />
                         <p className='sm:text-gray-800 sm:text-sm sm:not-italic sm:font-normal sm:leading-5'>Мы отправим потверждение и квитанцию вам на почту</p>
                     </div>
                     <p className='text-[#222] text-xs not-italic font-normal leading-4 mt-[20px]'>
@@ -58,4 +53,4 @@ const index = () => {
     )
 }
 
-export default index
+export default CompliteModal

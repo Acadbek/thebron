@@ -12,12 +12,13 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    "indent": ["error", 2],
     "react/prop-types": 0,
     'react/jsx-no-target-blank': 'off',
+    "react/no-unknown-property": ['error', { ignore: ['css'] }],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
   },
-  "react/no-unknown-property": ['error', { ignore: ['css'] }]
 }
