@@ -21,10 +21,14 @@ const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpenModal = () => setIsOpen(true);
+  const handleOpenModal = (e) => {
+    e.preventDefault();
+    setIsOpen(true)
+  };
 
   return (
     <nav flex py="34px" items-center justify-between>
+
       <NavLink to='/'>
         <Logo />
       </NavLink>
@@ -32,7 +36,7 @@ const Header = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button flex flex-col variant="ghost" size="icon">
-              <Globus/>
+              <Globus />
               {currentLang}
             </Button>
           </DropdownMenuTrigger>
@@ -53,6 +57,9 @@ const Header = () => {
             {t('login')}
           </Button>
           <AuthModal />
+          <div className=" hidden">
+            <AuthModal setIsOpen={setIsOpen} />
+          </div>
         </Dialog>
       </div>
     </nav>

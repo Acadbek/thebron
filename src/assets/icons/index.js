@@ -25,6 +25,10 @@ import { VectorIcon } from "./VectorIcon";
 import { WifiIcon } from "./wifiIcon";
 import { CeaningIcon } from "./CeaningIcon";
 import { Building } from "./Building";
+import { XIcon } from "./XIcon";
+import { ArrowLeftIcon } from "./ArrowLeftIcon";
+import { PhoneIcon } from "./PhoneIcon";
+import { MessageIcon } from "./MessageIcon";
 export {
     AppleIcon,
     CalendarBlankIcon,
@@ -52,5 +56,9 @@ export {
     StarIcon2,
     VectorIcon,
     WifiIcon,
-    CeaningIcon
+    CeaningIcon,
+    XIcon,
+    ArrowLeftIcon,
+    PhoneIcon,
+    MessageIcon,
 }
