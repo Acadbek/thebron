@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useGetResortByIDQuery } from '@/features/resort'
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button'; 7
@@ -9,19 +9,15 @@ import { DoorOpenIcon } from '@/assets/icons';
 import userImg from "@/assets/images/userImg.png"
 import {
   Carousel,
-  CarouselContent,
   CarouselItem,
   CarouselNext,
+  CarouselContent,
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
 import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { addDays, format } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
 import ScrollToTop from '@/components/ScrollToTop';
@@ -38,12 +34,13 @@ const DetailsPage = () => {
   const textRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const [date, setDate] = React.useState({ from: new Date(2024, 0, 1), to: addDays(new Date(2024, 0, 1), 1) })
-  const [ageCount, setAge] = useState(0)
-  const [childCount, setChildCount] = useState(0)
-  const [babies, setBabies] = useState(0)
-  const [pets, setPets] = useState(0)
   const [guestModal, setGuestModal] = useState(false)
-  const [bronDay, setBronDay] = useState(false)
+  const [counts, setCounts] = useState({ age: 0, child: 0, babies: 0, pets: 0 });
+  const [bronDay, setBronDay] = useState(() => {
+    const initialFrom = date.from;
+    const initialTo = date.to;
+    return (format(initialFrom, 't') - format(initialTo, 't')) / 86400;
+  });
   const { bron } = useSelector((store) => store)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -92,20 +89,27 @@ const DetailsPage = () => {
     setExpanded(!expanded);
   };
 
-  const totalAmount = () => {
-    return resort?.daily_price * (-bronDay)
-  }
+  const totalAmount = useMemo(() => {
+    return resort?.daily_price * (-bronDay);
+  }, [resort, bronDay]);
 
   const startBron = () => {
     new Promise((res, rej) => {
-      dispatch(pay({ data: resort, amount: totalAmount() + 120000 }))
+      dispatch(pay({ data: resort, amount: totalAmount + 120000 }))
       res()
     }).then(() => {
       navigate(`${location.pathname}/bron`)
-      console.log(bron);
-    }).catch(() => {
+    }).catch((err) => {
+      alert(err.message)
     })
   }
+
+  const updateCounts = (type, value) => {
+    setCounts((prevCounts) => ({
+      ...prevCounts,
+      [type]: prevCounts[type] + value
+    }));
+  };
 
   return (
     <div w="90%" max-w="1800px" mx-auto mt-0 px-6>
@@ -338,9 +342,9 @@ const DetailsPage = () => {
                           <span text="14px" not-italic font-normal leading-6>От 13 лет</span>
                         </p>
                         <div flex items-center gap="12px">
-                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setAge((prev) => prev - 1)}>-</Button>
-                          <span text-center text-xl not-italic font-medium leading-6>{ageCount}</span>
-                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setAge((prev) => prev + 1)}>+</Button>
+                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => updateCounts('age', -1)}>-</Button>
+                          <span text-center text-xl not-italic font-medium leading-6>{counts?.age || 0}</span>
+                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => updateCounts('age', 1)}>+</Button>
                         </div>
                       </div>
                       <div flex items-center justify-between>
@@ -349,9 +353,9 @@ const DetailsPage = () => {
                           <span text="14px" not-italic font-normal leading-6>2-12 лет</span>
                         </p>
                         <div flex items-center gap="12px">
-                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setChildCount((prev) => prev - 1)}>-</Button>
-                          <span text-center text-xl not-italic font-medium leading-6>{childCount}</span>
-                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setChildCount((prev) => prev + 1)}>+</Button>
+                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => updateCounts('child', -1)}>-</Button>
+                          <span text-center text-xl not-italic font-medium leading-6>{counts?.child || 0}</span>
+                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => updateCounts('child', 1)}>+</Button>
                         </div>
                       </div>
                       <div flex items-center justify-between>
@@ -360,9 +364,9 @@ const DetailsPage = () => {
                           <span text="14px" not-italic font-normal leading-6>Младше 2 </span>
                         </p>
                         <div flex items-center gap="12px">
-                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setBabies((prev) => prev - 1)}>-</Button>
-                          <span text-center text-xl not-italic font-medium leading-6>{babies}</span>
-                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setBabies((prev) => prev + 1)}>+</Button>
+                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => updateCounts('babies', -1)}>-</Button>
+                          <span text-center text-xl not-italic font-medium leading-6>{counts?.babies || 0}</span>
+                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => updateCounts('babies', 1)}>+</Button>
                         </div>
                       </div>
                       <div flex items-center justify-between>
@@ -371,9 +375,9 @@ const DetailsPage = () => {
                           <span text="14px" not-italic font-normal leading-6>Младше 2</span>
                         </p>
                         <div flex items-center gap="12px">
-                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setPets((prev) => prev - 1)}>-</Button>
-                          <span text-center text-xl not-italic font-medium leading-6>{pets}</span>
-                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => setPets((prev) => prev + 1)}>+</Button>
+                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => updateCounts('pets', -1)}>-</Button>
+                          <span text-center text-xl not-italic font-medium leading-6>{counts?.pets || 0}</span>
+                          <Button w="40px" h="40px" className="rounded-full" variant="outline" onClick={() => updateCounts('pets', 1)}>+</Button>
                         </div>
                       </div>
                     </div>
@@ -388,7 +392,7 @@ const DetailsPage = () => {
                 <ul>
                   <li flex items-center justify-between mt="32px">
                     <span underline> {formatNumber(resort?.daily_price)} сум x{-bronDay} </span>
-                    <span>{formatNumber(totalAmount())} сум</span>
+                    <span>{formatNumber(totalAmount)} сум</span>
                   </li>
                   <li flex items-center justify-between mt="16px">
                     <span underline>1Плата за уборку</span>
@@ -400,7 +404,7 @@ const DetailsPage = () => {
                   </li>
                 </ul>
                 <div w="100%" h="1px" bg="#EDEDED" mb="24px" mt="32px"></div>
-                <p text-2xl not-italic font-semibold leading-5 flex items-center justify-between>Всего(без учета) <span text-right text-2xl not-italic font-bold leading-5>{formatNumber(totalAmount() + 120000)}сум</span></p>
+                <p text-2xl not-italic font-semibold leading-5 flex items-center justify-between>Всего(без учета) <span text-right text-2xl not-italic font-bold leading-5>{formatNumber(totalAmount + 120000)}сум</span></p>
               </CardContent>
             </Card>
           </div>

@@ -17,6 +17,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { addDays } from "date-fns";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const Bron = () => {
   const [date, setDate] = useState({
@@ -74,6 +75,7 @@ export const Bron = () => {
 
   return (
     <>
+      <ScrollToTop />
       <Dialog open={openModal} onOpenChange={setOpenModal}>
         {chooseModal === 1 && 
           <DialogContent className="sm:max-w-[600px]">

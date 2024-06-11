@@ -22,6 +22,7 @@ const Index = ({ setOpenIsModal }) => {
     const [surnameError, setSurnameError] = useState('');
 
 
+
     const changeCloseModal = () => {
         setOpenIsModal(false);
         setChooseModal(1);
@@ -98,6 +99,9 @@ const Index = ({ setOpenIsModal }) => {
 
 
 
+
+
+
     return (
         <div>
             {chooseModal === 1 && (
@@ -166,13 +170,47 @@ const Index = ({ setOpenIsModal }) => {
                             <button className='w-full py-[12px] font-[500] bg-[#03559E] mt-[20px] mb-[45px] text-[#fff] rounded-[10px]'>Продолжить</button>
                         </div>
                     </div>
+
                 </DialogContent>
             )}
+
+
+            <div className='mt-[15px]'>
+                <Input type="email" placeholder="Email" className="py-[25px]" />
+                <p className='sm:text-gray-800 sm:text-sm sm:not-italic sm:font-normal sm:leading-5'>Мы отправим потверждение и квитанцию вам на почту</p>
+            </div>
+            <p className='text-[#222] text-xs not-italic font-normal leading-4 mt-[20px]'>
+                Нажимая  <span className='text-xs not-italic font-extrabold leading-4'>Согласиться и продолжить,</span> я принимаю следующие документы theBron:
+                <span className='text-blue-700 text-xs not-italic font-semibold leading-4 underline'>Условия предоставления услуг, Условия обработки платежей, и Политика конфиденциальности.</span>
+            </p>
+            <button className="mt-[15px] text-white bg-blue-600 w-full rounded-md py-[12px]">
+                Согласиться и продолжить
+            </button>
+            <div className='w-full h-[1px] bg-[#E0E0E0] my-[15px]'></div>
+            <p className='text-black text-sm not-italic font-normal leading-5'>
+                theBron будет отправлять вам эксклюзивные предложения, идеи, рекламные письма и push-оповещения.
+                Вы можете отказаться от них в настройках аккаунта или в маркетинговом уведомлении
+            </p>
+
+            <div className='mt-[15px]'>
+                <RadioGroup className="gap-0 border-none">
+                    <Label htmlFor="terms" className="radio-checkbox flex cursor-pointer items-center justify-between space-x-2 ">
+                        <Checkbox id="terms" />
+                        <p className='text-black text-base not-italic font-normal leading-3'>Я не хочу получать рекламные сообщения от <span className='text-blue-700 text-base not-italic font-normal leading-6'> theBron</span></p>
+                    </Label>
+                </RadioGroup>
+            </div>
         </div>
+       
+
+       
     );
 };
 
 export default Index;
+
+
+
 
 
 
