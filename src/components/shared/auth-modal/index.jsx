@@ -37,8 +37,8 @@ const AuthModal = ({ setIsOpen }) => {
         justify-center
         flex-col
         rounded="20px"
-        w="343px"
-        className="sm:w-[349px]  xl:w-[530px]"
+        w="373px"
+        className="w-[373px] sm:w-[349px]  xl:w-[530px]"
         XIcon={false}>
         <div text="center">
           <h6
@@ -80,14 +80,14 @@ const AuthModal = ({ setIsOpen }) => {
                 {(inputProps) => <input {...inputProps} type="text" placeholder="Номер телефона" />}
               </InputMask>
             </div>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p style={{ color: 'red' }} className="mt-[4px] absolute">{error}</p>}
 
             <p
               text="#454545"
               font="400"
               leading="20px"
               mt="20px"
-              className=" text-[14px] sm:text-center  sm:text-[14px] xl:text-sm  xl:font-normal xl:leading-5 xl:text-start">
+              className=" text-[14px] sm:text-center  sm:text-[14px] xl:text-sm  xl:font-normal xl:leading-5 xl:text-start mt-[37px]">
               Мы позвоним вам или отправим SMS, чтобы подтвердить номер телефона. Применяются стандартные условия вашего
               тарифа на прием сообщений и передачу данных. <span text-sm not-italic font-normal leading-5 underline> Политика конфиденциальности</span>
             </p>

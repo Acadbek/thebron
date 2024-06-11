@@ -29,6 +29,10 @@ import { XIcon } from "./XIcon";
 import { ArrowLeftIcon } from "./ArrowLeftIcon";
 import { PhoneIcon } from "./PhoneIcon";
 import { MessageIcon } from "./MessageIcon";
+import { TelegramLogoIcon } from "./TelegramLogoIcon";
+import { PaymentIcon } from "./PaymentIcon";
+import { GroupIcon } from "./GroupIcon";
+import { VectorIcon2 } from "./VectorIcon2";
 export {
     AppleIcon,
     CalendarBlankIcon,
@@ -61,4 +65,8 @@ export {
     ArrowLeftIcon,
     PhoneIcon,
     MessageIcon,
+    TelegramLogoIcon,
+    PaymentIcon,
+    GroupIcon,
+    VectorIcon2
 }

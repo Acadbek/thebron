@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, XIcon, MessageIcon, PhoneIcon } from "@/assets/icons";
+import { ArrowLeftIcon, XIcon, MessageIcon, PhoneIcon, TelegramLogoIcon } from "@/assets/icons";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +20,7 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
   };
   const changeModal = () => {
     setOpenModal(false)
+    setChooseModal(1)
   }
   const changeBackModal = () => {
     setChooseModal(1);
@@ -33,7 +34,7 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
     setOpenIsModal(true);
     setOpenModal(false)
   }
- 
+
   const [confirmationCode, setConfirmationCode] = useState(["", "", "", "", ""]);
   const inputRefs = useRef([]);
 
@@ -56,21 +57,21 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
   return (
     <div>
       {chooseModal === 1 && (
-        <DialogContent XIcon={false} className="sm:w-[420px] sm:py-[44px]">
+        <DialogContent XIcon={false} className="w-[373px]  sm:w-[420px] 2xl:w-[530px] sm:py-[44px] px-[16px]">
           <div>
             <div className="flex items-center justify-between">
               <span onClick={changeIsModal} className="cursor-pointer"><ArrowLeftIcon /></span>
               <span onClick={changeModal} className="cursor-pointer"><XIcon /></span>
             </div>
             <div className="sm:mt-[20px]">
-              <h6 className="text-black text-2xl font-bold leading-9">Введите код</h6>
-              <p className="text-black text-[16px] font-medium leading-5 mt-[10px]">
+              <h6 className="text-black sm:text-2xl text-[20px] font-bold leading-9">Введите код</h6>
+              <p className="text-black sm:text-[18px] font-medium leading-[24px] mt-[10px] text-[16px]">
                 Для подтверждения телефона отправили 4 значный код на{" "}
                 <span className="font-bold">+998(90) 115 92 34</span>
               </p>
             </div>
 
-            <div className="flex items-center justify-between my-[24px]">
+            <div className="flex items-center justify-center gap-[16px] my-[24px]">
               {confirmationCode.map((digit, index) => (
                 <input
                   key={index}
@@ -80,7 +81,7 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
                   value={digit}
                   onChange={(e) => handleChange(index, e)}
                   onKeyDown={(e) => handleKeyDown(index, e)}
-                  className="w-12 h-12 text-lg text-center bg-gray-200 rounded-md border-none"
+                  className="sm:w-[60px] sm:h-[60px] w-[56px] h-[56px] text-[20px] text-center bg-gray-200 rounded-md border-none"
                 />
               ))}
             </div>
@@ -88,7 +89,7 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
             <p className="text-gray-600 text-center text-base">Если код не придет, то можно получить новый через 51 сек</p>
             <button
               onClick={changeCompliteModal}
-              className="mt-4 text-white bg-blue-600 w-full rounded-md py-2">
+              className="mt-4 text-white bg-[#03559E] w-full rounded-md py-[12px]">
               Продолжить
             </button>
 
@@ -101,21 +102,21 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
         </DialogContent>
       )}
       {chooseModal === 2 && (
-        <DialogContent XIcon={false} className="sm:w-[420px] sm:px-[20px] sm:py-[24px]">
+        <DialogContent XIcon={false} className="w-[373px] sm:w-[420px] 2xl:w-[530px] sm:px-[20px] sm:py-[24px]">
           <div className="flex items-center justify-between">
             <span onClick={changeBackModal} className=" cursor-pointer"><ArrowLeftIcon /></span>
             <span onClick={changeModal} className="cursor-pointer"><XIcon /></span>
           </div>
           <div>
-            <h6 className="text-black text-[28px] font-semibold leading-9">Другие варианты</h6>
-            <p className="text-black text-lg font-medium leading-6 mt-[12px]">
+            <h6 className="text-black  text-[20px] font-semibold leading-9 sm:text-[28px]">Другие варианты</h6>
+            <p className="text-black  text-[16px] font-medium leading-6 mt-[12px] sm:text-[18px]">
               Выберите другой способ получить код на{" "}
-              <span className="font-bold">+998(90) 115 92 34</span>
+              <span className="font-bold text-[18px] leading-[24px]">+998(90) 115 92 34</span>
             </p>
           </div>
 
           <div className="sm:my-[24px]">
-            <RadioGroup className="gap-0 border-none">
+            <RadioGroup className="gap-[24px] sm:gap-0 border-none">
               <Label htmlFor="r1" className="radio-checkbox flex cursor-pointer items-center space-x-2 justify-between ">
                 <div flex flex-col>
                   <div className="flex items-center gap-[17px]">
@@ -134,7 +135,25 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
 
               <div className="bg-[#E0E0E0] w-full h-[1px]"></div>
 
-              <Label htmlFor="r2" className="radio-checkbox flex cursor-pointer items-center justify-between space-x-2 ">
+              <Label htmlFor="r2" className="radio-checkbox flex cursor-pointer items-center justify-between space-x-2 sm:hidden ">
+                <div flex flex-col gap="8px">
+                  <div className="flex items-center gap-[17px]">
+                    <TelegramLogoIcon />
+                    <div>
+                      <h6 className="text-black text-lg font-bold leading-6">Telegram</h6>
+                      <p className="text-gray-600 text-base leading-6 mt-[4px]">Мы отправим вам код во Wi-Fi</p>
+                    </div>
+                  </div>
+                </div>
+                <RadioGroupItem
+                  className="w-[24px] h-[24px]"
+                  value="2"
+                  id="r2" />
+              </Label>
+
+              <div className="bg-[#E0E0E0] w-full h-[1px] sm:hidden"></div>
+
+              <Label htmlFor="r2" className="radio-checkbox flex cursor-pointer items-center justify-between space-x-2  ">
                 <div flex flex-col gap="8px">
                   <div className="flex items-center gap-[17px]">
                     <PhoneIcon />
@@ -152,14 +171,14 @@ const AuthModal = ({ setOpenModal, setIsOpen }) => {
             </RadioGroup>
           </div>
 
-          <button className="mt-4 text-white bg-blue-600 w-full rounded-md py-2">
+          <button className="mt-4 text-white bg-[#03559E] w-full rounded-md py-[12px]">
             Отправить код ещё раз
           </button>
         </DialogContent>
       )}
 
       <Dialog open={openIsModal} onOpenChange={setOpenIsModal}>
-        <CompliteModal />
+        <CompliteModal setOpenIsModal={setOpenIsModal} />
       </Dialog>
     </div>
   );
