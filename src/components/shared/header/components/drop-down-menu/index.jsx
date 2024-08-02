@@ -9,6 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Link } from "react-router-dom";
 
 export function ProfileDropDownMenu() {
   const isAuthenticated = true;
@@ -54,7 +55,11 @@ export function ProfileDropDownMenu() {
         </DropdownMenuContent>
       ) : (
         <DropdownMenuContent className="w-56 mr-4">
-          <DropdownMenuLabel>Account</DropdownMenuLabel>
+          <Link to="/account">
+            <DropdownMenuItem>
+              <span>Профиль</span>
+            </DropdownMenuItem>
+          </Link>
           <DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
