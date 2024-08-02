@@ -101,6 +101,18 @@ const resorts = [
       "https://a0.muscache.com/im/pictures/miso/Hosting-668620215138733009/original/3a98d3df-4b4d-4e03-908c-1e719e46c98d.jpeg",
     ],
   },
+  {
+    id: 15,
+    name: "Mountain View Resort",
+    location_name: "123 Alpine St, Mountain Town, MT 56789",
+    availability_dates: [{ date: "2024-5-9" }],
+    daily_price: 200,
+    images: [
+      "https://a0.muscache.com/im/pictures/867f3f73-d34d-4ab9-8733-f7616fed468c.jpg",
+      "https://a0.muscache.com/im/pictures/24047cc9-6c13-4d86-9a20-6f588219e9a0.jpg",
+      "https://a0.muscache.com/im/pictures/e8aec89f-e8d5-475a-87cd-423dee7cb818.jpg",
+    ],
+  },
 ];
 
 const inActiveIconColor = "#03559E";
@@ -222,6 +234,15 @@ const Home = () => {
       <div className="max-w-[1800px] mx-auto">
         <h2 className="text-[28px] font-semibold leading-9 mt-15 mb-8">
           Дачные дома
+        </h2>
+        <div className="grid-container">
+          {resorts?.map((item) => (
+            <Card key={item?.id} item={item} />
+          ))}
+        </div>
+
+        <h2 className="text-[28px] font-semibold leading-9 mt-15 mb-8">
+          Санатории
         </h2>
         <div className="grid-container">
           {resorts?.map((item) => (
