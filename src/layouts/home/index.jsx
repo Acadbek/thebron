@@ -1,6 +1,6 @@
-import Footer from "@/components/shared/footer"
-import Header from "@/components/shared/header"
-import { Outlet } from "react-router-dom"
+import Footer from "@/components/shared/footer";
+import Header from "@/components/shared/header";
+import { Outlet } from "react-router-dom";
 
 const HomeLayout = () => {
   return (
@@ -11,7 +11,7 @@ const HomeLayout = () => {
       </main>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default HomeLayout
+export default HomeLayout;

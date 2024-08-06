@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import DetailsPage from "@/pages/home/details";
 import Loader from "@/components/shared/loader";
 import Account from "@/pages/account";
+import PersonalInformation from "@/pages/account/personal-information";
 
 const Router = () => {
   return (
@@ -37,6 +38,15 @@ const Router = () => {
             element={
               <Suspense fallback={<Loader />}>
                 <Account />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/account/personal-information"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PersonalInformation />
               </Suspense>
             }
           />

@@ -57,7 +57,7 @@ export function ProfileDropDownMenu() {
         <DropdownMenuContent className="w-56 mr-4">
           <Link to="/account">
             <DropdownMenuItem>
-              <span>Профиль</span>
+              <span>Account</span>
             </DropdownMenuItem>
           </Link>
           <DropdownMenuGroup>
