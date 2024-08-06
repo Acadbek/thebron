@@ -25,8 +25,8 @@ export function ProfileDropDownMenu() {
           <g
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-width="1.5"
+            strokeLinecap="round"
+            strokeWidth="1.5"
           >
             <path d="M20 7H4" />
             <path d="M20 12H4" opacity=".5" />

@@ -60,7 +60,7 @@ const Card = ({ item }) => {
         font-normal
         leading-6
         mt-1
-        datetime=""
+        dateTime=""
       >
         {f(item?.availability_dates[0]?.date, "MMM dd")}
       </time>

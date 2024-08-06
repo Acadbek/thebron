@@ -6,6 +6,7 @@ import DetailsPage from "@/pages/home/details";
 import Loader from "@/components/shared/loader";
 import Account from "@/pages/account";
 import PersonalInformation from "@/pages/account/personal-information";
+import LoginAndSecurity from "@/pages/account/login-and-security";
 
 const Router = () => {
   return (
@@ -44,6 +45,24 @@ const Router = () => {
 
           <Route
             path="/account/personal-information"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PersonalInformation />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/account/login-and-security"
+            element={
+              <Suspense fallback={<Loader />}>
+                <LoginAndSecurity />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/account/personal-information/:id"
             element={
               <Suspense fallback={<Loader />}>
                 <PersonalInformation />

@@ -1,5 +1,18 @@
 {
   "welcome": "Welcome",
   "login": "Login",
-  "filter": ""
+  "filter": "Filter",
+  "search": "Search",
+  "logout": "Logout",
+  "profile": "Profile",
+  "settings": "Settings",
+  "language": "Language",
+  "theme": "Theme",
+  "dark": "Dark",
+  "light": "Light",
+  "system": "System",
+  "help": "Help",
+  "about": "About",
+  "account": "Account",
+  "personal-information": "Personal Information"
 }

@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import PersonalInfoLayout from "./layout";
 
 export const Account = () => {
   return (
-    <div className="p-4">
-      <p className="text-[28px] font-bold mb-2">Аккаунт</p>
-      <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4">
+    <PersonalInfoLayout>
+      <p className="text-[14px] sm:text-2xl md:text-3xl font-bold mb-2">
+        Аккаунт
+      </p>
+      <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-2">
         <p className="font-medium">Faxriddin Mulatov</p>
         <a href="mailto:workmulatov@gmail.com">workmulatov@gmail.com</a>
         <Link
@@ -35,7 +38,10 @@ export const Account = () => {
             <p>Faxriddin Mulatov, workmulatov@gmail.com</p>
           </div>
         </Link>
-        <Link className="col-span-1 py-5 px-4 border rounded-md hover:border-[#03559E] flex flex-col justify-between h-56">
+        <Link
+          to="login-and-security"
+          className="col-span-1 py-5 px-4 border rounded-md hover:border-[#03559E] flex flex-col justify-between h-56"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="44"
@@ -70,7 +76,7 @@ export const Account = () => {
           </div>
         </Link>
       </div>
-    </div>
+    </PersonalInfoLayout>
   );
 };
 

@@ -1,5 +1,18 @@
 {
   "welcome": "Hush kelibsiz",
   "login": "Kirish",
-  "filter": ""
+  "filter": "Filtr",
+  "search": "Qidirish",
+  "logout": "Chiqish",
+  "profile": "Profil",
+  "settings": "Sozlamalar",
+  "language": "Til",
+  "theme": "Mavzu",
+  "dark": "Qora",
+  "light": "Oq",
+  "system": "Tizim",
+  "help": "Yordam",
+  "about": "Dastur haqida",
+  "account": "Hisob",
+  "personal-information": "Shaxsiy ma'lumotlar"
 }
