@@ -71,7 +71,7 @@ const Router = () => {
           />
 
           <Route
-            path=":id/bron"
+            path="resorts/:id/bron"
             element={
               <Suspense fallback={<Loader />}>
                 <Bron />

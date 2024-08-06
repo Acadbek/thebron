@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import PersonalInfoLayout from "./layout";
+import AccountLayout from "./layout";
 
 export const Account = () => {
   return (
-    <PersonalInfoLayout>
+    <AccountLayout>
       <p className="text-[14px] sm:text-2xl md:text-3xl font-bold mb-2">
         Аккаунт
       </p>
@@ -76,7 +76,7 @@ export const Account = () => {
           </div>
         </Link>
       </div>
-    </PersonalInfoLayout>
+    </AccountLayout>
   );
 };
 

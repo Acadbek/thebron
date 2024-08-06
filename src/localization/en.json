@@ -14,5 +14,18 @@
   "help": "Help",
   "about": "About",
   "account": "Account",
-  "personal-information": "Personal Information"
+  "personal-information": "Personal Information",
+  "Имя-по-документам": "Name on documents",
+  "Редактировать": "Edit",
+  "Добавить": "Add",
+  "Нет данных": "No data",
+  "Электронный адрес": "Email",
+  "Номера телефонов": "Phone numbers",
+  "Government ID": "Government ID",
+  "Адрес": "Address",
+  "Контактное лицо в чрезвычайные ситуации": "Emergency contact",
+  "Phone number for contact": "Please provide a phone number so that theBron and guests on confirmed bookings can contact you. You can add other numbers and specify their destinations.",
+  "Сохранить": "Save",
+  "phone-number": "Phone number",
+  "Вход": "Sign in"
 }
