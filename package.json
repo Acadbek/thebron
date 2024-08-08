@@ -27,6 +27,7 @@
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-toggle-group": "^1.0.4",
     "@react-oauth/google": "^0.12.1",
+    "@react-spring/three": "^9.7.4",
     "@react-three/drei": "^9.109.5",
     "@react-three/fiber": "^8.16.8",
     "@reduxjs/toolkit": "^2.2.5",
