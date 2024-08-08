@@ -15,7 +15,7 @@ const chairsPositions = [
 ];
 
 const ChairModel = ({ position }) => {
-  const gltf = useLoader(GLTFLoader, "/models/chair.glb"); // Ensure this path is correct
+  const gltf = useLoader(GLTFLoader, "/public/models/chair.glb"); // Ensure this path is correct
 
   return (
     <primitive
@@ -28,7 +28,7 @@ const ChairModel = ({ position }) => {
 };
 
 const TableModel = () => {
-  const gltf = useLoader(GLTFLoader, "/models/table.glb"); // Ensure this path is correct
+  const gltf = useLoader(GLTFLoader, "/public/models/table.glb"); // Ensure this path is correct
 
   // Optional: Debug by logging the loaded GLTF
   console.log(gltf);
