@@ -7,7 +7,7 @@
   ],
   "headers": [
     {
-      "source": "/public/models/(.*)",
+      "source": "/public/(.*)",
       "headers": [
         {
           "key": "Content-Type",
