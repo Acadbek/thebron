@@ -24,7 +24,6 @@ export const LoginAndSecurity = () => {
   return (
     <AccountLayout>
       <Tabs />
-      <p className="text-[28px] font-bold mb-2 mt-5">{t("Вход")}</p>
       <div>{tabContent()}</div>
     </AccountLayout>
   );

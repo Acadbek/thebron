@@ -1,7 +1,17 @@
 {
+  "password": "Password",
+  "update": "Update",
+  "last-modified-date": "Last modified date",
   "welcome": "Welcome",
   "login": "Login",
+  "not-connected": "Not connected",
+  "connect": "Connect",
+  "disconnect": "Disconnect",
+  "latest-devices": "Latest devices",
   "filter": "Filter",
+  "Session": "Session",
+  "current-session": "Current session",
+  "connected": "Connected",
   "search": "Search",
   "logout": "Logout",
   "profile": "Profile",
@@ -27,5 +37,6 @@
   "Phone number for contact": "Please provide a phone number so that theBron and guests on confirmed bookings can contact you. You can add other numbers and specify their destinations.",
   "Сохранить": "Save",
   "phone-number": "Phone number",
-  "Вход": "Sign in"
+  "Вход": "Sign in",
+  "social-media-accounts": "Social media accounts"
 }

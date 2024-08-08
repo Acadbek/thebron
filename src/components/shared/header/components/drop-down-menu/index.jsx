@@ -36,19 +36,21 @@ export function ProfileDropDownMenu() {
       </DropdownMenuTrigger>
       {!isAuthenticated ? (
         <DropdownMenuContent className="w-56 mr-4">
-          <DropdownMenuLabel>Зарегистрироваться</DropdownMenuLabel>
+          <DropdownMenuLabel className="cursor-pointer">
+            Зарегистрироваться
+          </DropdownMenuLabel>
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
               <span>Войти</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
               <span>Сообщение</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
               <span>Избранный</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
               <span>История</span>
             </DropdownMenuItem>
           </DropdownMenuGroup>
@@ -56,19 +58,19 @@ export function ProfileDropDownMenu() {
       ) : (
         <DropdownMenuContent className="w-56 mr-4">
           <Link to="/account">
-            <DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
               <span>Account</span>
             </DropdownMenuItem>
           </Link>
           <DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
               <span>Сообщение</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
               <span>Избранный</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
               <span>История</span>
             </DropdownMenuItem>
           </DropdownMenuGroup>

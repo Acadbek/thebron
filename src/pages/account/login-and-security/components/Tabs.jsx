@@ -13,7 +13,7 @@ export const Tabs = () => {
         style={{ borderColor: tab === 1 && "#03559E" }}
         onClick={(e) => handelClick(e)}
         data-v="1"
-        className="cursor-pointer font-medium pr-4 py-2 pb-1 text-left border-b-2 border-transparent"
+        className="cursor-pointer font-medium pr-4 pt-2 pb-2 text-left border-b-2 border-transparent"
       >
         Войти
       </li>
@@ -21,7 +21,7 @@ export const Tabs = () => {
         style={{ borderColor: tab === 2 && "#03559E" }}
         onClick={(e) => handelClick(e)}
         data-v="2"
-        className="cursor-pointer pr-4 pb-1 py-2 font-medium border-b-2 border-transparent"
+        className="cursor-pointer pr-4 pb-2 py-2 font-medium border-b-2 border-transparent"
       >
         Запросы на вход
       </li>
@@ -29,7 +29,7 @@ export const Tabs = () => {
         style={{ borderColor: tab === 3 && "#03559E" }}
         onClick={(e) => handelClick(e)}
         data-v="3"
-        className="cursor-pointer pr-4 pb-1 py-2 border-b-2 font-medium border-transparent"
+        className="cursor-pointer pr-4 pb-2 py-2 border-b-2 font-medium border-transparent"
       >
         Совместный доступ
       </li>
