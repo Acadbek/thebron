@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import Alert from "./Alert-dialog";
 
 export const LoginTab = () => {
   const [sectionOfChangePassword, setSectionOfChangePassword] =

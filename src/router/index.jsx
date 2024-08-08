@@ -1,10 +1,17 @@
 import { AuthLayout, HomeLayout } from "@/layouts";
-import { Home, News, Login, Bron } from "./lazy";
+import {
+  Home,
+  News,
+  Login,
+  Bron,
+  Account,
+  Restaurant,
+  RestaurantSlug,
+} from "./lazy";
 import { Routes, Route } from "react-router-dom";
 import { Suspense } from "react";
 import DetailsPage from "@/pages/home/details";
 import Loader from "@/components/shared/loader";
-import Account from "@/pages/account";
 import PersonalInformation from "@/pages/account/personal-information";
 import LoginAndSecurity from "@/pages/account/login-and-security";
 
@@ -23,8 +30,19 @@ const Router = () => {
             }
           />
 
+          {/* Resorts */}
           <Route path="/resorts/:id" element={<DetailsPage />} />
 
+          <Route
+            path="resorts/:id/bron"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Bron />
+              </Suspense>
+            }
+          />
+
+          {/* News */}
           <Route
             path="/news"
             element={
@@ -34,6 +52,26 @@ const Router = () => {
             }
           />
 
+          {/* Restaurant */}
+          <Route
+            path="/restaurant"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Restaurant />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/restaurant/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <RestaurantSlug />
+              </Suspense>
+            }
+          />
+
+          {/* Account */}
           <Route
             path="/account"
             element={
@@ -66,15 +104,6 @@ const Router = () => {
             element={
               <Suspense fallback={<Loader />}>
                 <PersonalInformation />
-              </Suspense>
-            }
-          />
-
-          <Route
-            path="resorts/:id/bron"
-            element={
-              <Suspense fallback={<Loader />}>
-                <Bron />
               </Suspense>
             }
           />
