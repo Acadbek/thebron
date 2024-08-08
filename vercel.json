@@ -11,7 +11,8 @@
       "headers": [
         {
           "key": "Content-Type",
-          "value": "model/gltf-binary"
+          "value": "model/gltf-binary",
+          "type": "text"
         }
       ]
     }
