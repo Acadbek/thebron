@@ -1,8 +1,13 @@
+import React from "react";
 import { StarIcon2 } from "@/assets/icons";
 import ImgGallery from "@/components/shared/img-gallery";
-import ThreeDScene from "./components/TableScene";
+// import ThreeDScene from "./components/TableScene";
+// import lazy threeDScene component
+// import { Suspense } from "react";
+// import { Loader } from "@/components/shared/loader";
 import LeftSide from "./components/LeftSide";
 import TabsComponent from "./components/tab";
+const ThreeDScene = React.lazy(() => import("./components/TableScene"));
 
 const Restaurant = () => {
   return (

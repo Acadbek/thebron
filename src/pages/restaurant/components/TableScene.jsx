@@ -36,7 +36,7 @@ const TableModel = ({ position }) => {
 const Scene = () => {
   const { chair } = React.useContext(SceneContext);
 
-  const numTables = 25; // Total number of tables
+  const numTables = 8; // Total number of tables
   const numChairsPerTable = chair;
   const tableSpacing = 15;
   const chairRadius = 3.5;
@@ -82,7 +82,7 @@ const Scene = () => {
     <Suspense fallback={<Loader />}>
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} intensity={1} castShadow />
-      <Bounds fit clip observe margin={1.2}>
+      <Bounds fit clip margin={1.2}>
         <SelectToZoom>
           {Array.from({ length: numTables }).map((_, index) => {
             const row = Math.floor(index / columns);
