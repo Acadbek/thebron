@@ -1,57 +1,40 @@
 import React, { Suspense, useMemo } from "react";
-import { Canvas, useLoader, useFrame } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Skeleton } from "@/components/ui/skeleton";
-import { SceneContext } from "../context";
 
-const Loader = () => {
-  return (
-    <Html center>
-      <Skeleton className="h-[580px] w-[1080px]" />
-    </Html>
-  );
-};
+const Loader = () => (
+  <Html center>
+    <div className="loader">Loading...</div>
+  </Html>
+);
 
-const ChairModel = ({ chair }) => {
+const ChairModel = ({ position, rotation }) => {
   const gltf = useLoader(GLTFLoader, "/models/chair.glb");
   const clone = useMemo(() => gltf.scene.clone(), [gltf]);
 
   return (
     <primitive
       object={clone}
+      position={position}
+      rotation={rotation}
       scale={9}
-      position={chair.position}
-      rotation={chair.rotation}
+      castShadow
     />
   );
 };
 
-const TableModel = () => {
+const TableModel = ({ position }) => {
   const gltf = useLoader(GLTFLoader, "/models/table.glb");
-  return <primitive object={gltf.scene} position={[0, 0, 0]} scale={4} />;
+  const clone = useMemo(() => gltf.scene.clone(), [gltf]);
+  return <primitive object={clone} position={position} scale={4} />;
 };
-
-const Box = () => {
-  const meshRef = React.useRef();
-
-  useFrame(() => {
-    // meshRef.current.rotation.x += 0.01;
-    meshRef.current.rotation.y += 0.01;
-  });
-
-  meshRef.current.rotation.x = 0.01;
-
-  return (
-    <mesh scale={0.5} position={[0, 0, 5]} ref={meshRef} castShadow>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="orange" />
-    </mesh>
-  );
-};
-
 const Scene = () => {
-  const { chair } = React.useContext(SceneContext);
+  const numTables = 20; // Total number of tables
+  const numChairsPerTable = 6;
+  const tableSpacing = 15;
+  const chairRadius = 3.5;
+  const columns = 4; // Number of columns in the grid
 
   const calculateRotation = (position) => {
     const [x, , z] = position;
@@ -75,38 +58,48 @@ const Scene = () => {
     return positions;
   };
 
-  const radius = 3.5;
-  const numChairs = chair;
-
-  const chairsPositions = generateChairPositions(numChairs, radius);
-
   return (
     <Suspense fallback={<Loader />}>
       <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} />
-      {chairsPositions.map((chair, index) => (
-        <ChairModel key={index} chair={chair} />
-      ))}
-      <TableModel />
+      <pointLight position={[10, 10, 10]} intensity={1} castShadow />
+      {Array.from({ length: numTables }).map((_, index) => {
+        const row = Math.floor(index / columns);
+        const col = index % columns;
+        const tablePosition = [col * tableSpacing, 0, row * tableSpacing];
+        const chairsPositions = generateChairPositions(
+          numChairsPerTable,
+          chairRadius,
+        );
+
+        return (
+          <React.Fragment key={index}>
+            <TableModel position={tablePosition} />
+            {chairsPositions.map((chair, chairIndex) => (
+              <ChairModel
+                key={`${index}-${chairIndex}`}
+                position={[
+                  chair.position[0] + tablePosition[0],
+                  chair.position[1],
+                  chair.position[2] + tablePosition[2],
+                ]}
+                rotation={chair.rotation}
+              />
+            ))}
+          </React.Fragment>
+        );
+      })}
     </Suspense>
   );
 };
 
 const ThreeDScene = () => {
-  const changeZoom = (e) => {
-    console.log(e);
-  };
-
   return (
     <Canvas
-      camera={{ position: [0, 5, 10], fov: 50, near: 0.1, far: 1000 }}
+      camera={{ position: [0, 10, 20], fov: 50, near: 0.1, far: 1000 }}
       style={{ height: "100%", cursor: "grab" }}
+      shadows
     >
-      <OrbitControls
-        onChange={(e) => changeZoom(e)}
-        enableZoom={true}
-        enableRotate={true}
-      />
+      <OrbitControls enableZoom={true} enableRotate={true} />
       <Scene />
     </Canvas>
   );
