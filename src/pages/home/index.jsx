@@ -26,6 +26,8 @@ import Card from "@/components/shared/card";
 import { useLazyGetResortsQuery } from "@/features/resort";
 import { Input } from "@/components/ui/input";
 import { ToggleGroup } from "@/components/ui/toggle-group";
+import CinemaCard from "@/components/shared/cinema-card";
+import { Button } from "@/components/ui/button";
 
 const caroulselData = [
   { title: "For the first rented house", img: img1, percent: "10%" },
@@ -34,17 +36,85 @@ const caroulselData = [
 ];
 
 const menus = [
-  { id: 1, title: "Все", icon: Building },
-  { id: 2, title: "Отели", icon: Building },
-  { id: 3, title: "Дача", icon: Dacha },
-  { id: 4, title: "Лагерь", icon: Lager },
-  { id: 5, title: "Санатория", icon: Sanatoriya },
-  { id: 6, title: "Ресторан", icon: Restoran },
-  { id: 7, title: "Чайхана", icon: Chayxana },
-  { id: 8, title: "Кино", icon: Kino },
-  { id: 9, title: "Game club", icon: Djostik },
-  { id: 10, title: "Самолет", icon: Pilot },
-  { id: 11, title: "Поезд", icon: Poezd },
+  {
+    id: 1,
+    title: "Все",
+    icon: Building,
+    name: "all",
+  },
+  { id: 2, title: "Отели", icon: Building, name: "hotels" },
+  { id: 3, title: "Дача", icon: Dacha, name: "dacha" },
+  { id: 4, title: "Лагерь", icon: Lager, name: "camp" },
+  { id: 5, title: "Санатория", icon: Sanatoriya, name: "sanatorium" },
+  { id: 6, title: "Ресторан", icon: Restoran, name: "restaurant" },
+  { id: 7, title: "Чайхана", icon: Chayxana, name: "teahouse" },
+  { id: 8, title: "Кино", icon: Kino, name: "cinema" },
+  { id: 9, title: "Game club", icon: Djostik, name: "game-club" },
+  { id: 10, title: "Самолет", icon: Pilot, name: "plane" },
+  { id: 11, title: "Поезд", icon: Poezd, name: "train" },
+];
+
+const restaurants = [
+  {
+    id: 1,
+    name: "Besh Qozon",
+    location_name: "Tashkent, Uzbekistan",
+    cuisine: "Uzbek",
+    daily_price: 3,
+    availability_dates: [{ date: "2024-08-25" }],
+    images: [
+      "https://media-cdn.tripadvisor.com/media/photo-s/17/f5/6e/ba/caption.jpg",
+      "https://example.com/beshqozon2.jpg",
+    ],
+  },
+  {
+    id: 2,
+    name: "Khiva Restaurant",
+    location_name: "Hyatt Regency, Tashkent, Uzbekistan",
+    cuisine: "Uzbek",
+    daily_price: 23.9,
+    availability_dates: [{ date: "2024-08-26" }],
+    images: [
+      "https://images.myguide-cdn.com/moscow/companies/restaurant-uzbekistan/large/restaurant-uzbekistan-127321.jpg",
+      "https://example.com/khivarestaurant2.jpg",
+    ],
+  },
+  {
+    id: 3,
+    name: "Ember",
+    location_name: "InterContinental, Tashkent, Uzbekistan",
+    cuisine: "Pan-Asian Fusion",
+    daily_price: 18,
+    availability_dates: [{ date: "2024-08-27" }],
+    images: [
+      "https://thumbs.dreamstime.com/b/traditional-uzbek-restaurant-oriental-central-asian-seats-ceiling-lamps-arched-bows-windows-wall-161887488.jpg",
+      "https://example.com/ember2.jpg",
+    ],
+  },
+  {
+    id: 4,
+    name: "Silk 96 Wine & Lounge",
+    location_name: "Tashkent, Uzbekistan",
+    cuisine: "International",
+    daily_price: 12,
+    availability_dates: [{ date: "2024-08-28" }],
+    images: [
+      "https://cdnb.artstation.com/p/assets/images/images/025/937/027/large/evgeny-jigalov-7rjnhotubqy-1.jpg?1587397478",
+      "https://example.com/silk962.jpg",
+    ],
+  },
+  {
+    id: 1,
+    name: "Besh Qozon",
+    location_name: "Tashkent, Uzbekistan",
+    cuisine: "Uzbek",
+    daily_price: 3,
+    availability_dates: [{ date: "2024-08-25" }],
+    images: [
+      "https://media-cdn.tripadvisor.com/media/photo-s/17/f5/6e/ba/caption.jpg",
+      "https://example.com/beshqozon2.jpg",
+    ],
+  },
 ];
 
 const resorts = [
@@ -115,6 +185,44 @@ const resorts = [
   },
 ];
 
+const cinemas = [
+  {
+    id: 1,
+    img: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10543523_p_v8_as.jpg",
+    title: "Interstellar",
+    genre: "Sci-Fi",
+    location: "San Francisco, CA",
+  },
+  {
+    id: 2,
+    img: "https://m.media-amazon.com/images/M/MV5BMjExMjkwNTQ0Nl5BMl5BanBnXkFtZTcwNTY0OTk1Mw@@._V1_.jpg",
+    title: "Inception",
+    genre: "Sci-Fi",
+    location: "Los Angeles, CA",
+  },
+  {
+    id: 3,
+    img: "https://m.media-amazon.com/images/S/pv-target-images/e9a43e647b2ca70e75a3c0af046c4dfdcd712380889779cbdc2c57d94ab63902.jpg",
+    title: "The Dark Knight",
+    genre: "Action",
+    location: "New York, NY",
+  },
+  {
+    id: 4,
+    img: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10543523_p_v8_as.jpg",
+    title: "Interstellar",
+    genre: "Sci-Fi",
+    location: "San Francisco, CA",
+  },
+  {
+    id: 5,
+    img: "https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX1000_.jpg",
+    title: "Titanic",
+    genre: "Romance",
+    location: "Chicago, IL",
+  },
+];
+
 const inActiveIconColor = "#03559E";
 const activeIconColor = "#ffffff";
 
@@ -122,14 +230,21 @@ const Home = () => {
   // const [getResorts, { data, isLoading }] = useLazyGetResortsQuery();
   const [activeMenu, setActiveMenu] = React.useState(null);
   const [isImgLoaded, setImgIsLoaded] = React.useState(false);
+  const [selectedMenu, setSelectedMenu] = React.useState("Все");
 
-  // React.useEffect(() => {
-  //   getResorts();
-  // }, [getResorts]);
-
-  const handleMenuClick = (menuId) => {
-    setActiveMenu(menuId);
+  const dataMapping = {
+    // Все: [...restaurants, ...resorts], // Show all data
+    // Ресторан: restaurants,
+    // Отели: resorts,
+    // Add more mappings as needed
   };
+
+  const handleMenuClick = (menuId, name) => {
+    setActiveMenu(menuId);
+    setSelectedMenu(name);
+  };
+
+  const filteredData = dataMapping[selectedMenu] || [];
 
   let src = caroulselData[0]?.img;
 
@@ -150,33 +265,14 @@ const Home = () => {
           <CarouselContent>
             {caroulselData?.map((item, index) => (
               <CarouselItem key={index}>
-                <div
-                  text="88px"
-                  font-bold
-                  leading="96px"
-                  className="text-[#fff]"
-                  select-none
-                  relative
-                >
-                  <p absolute mt="93px" ml="40px">
-                    {item?.title}
-                  </p>
+                <div className="relative text-[#fff] text-[88px] font-bold leading-[96px] select-none">
+                  <p className="absolute mt-[93px] ml-[40px]">{item?.title}</p>
                   <img
-                    w-full
-                    rounded-2xl
-                    h="420px"
-                    object-cover
+                    className="w-full rounded-2xl h-[420px] object-cover"
                     src={item?.img}
                     alt="Main background images"
                   />
-                  <p
-                    absolute
-                    bottom="93px"
-                    ml="40px"
-                    rounded-lg
-                    p-4
-                    bg="#D9D9D9AB"
-                  >
+                  <p className="absolute bottom-[93px] ml-[40px] rounded-lg p-4 bg-[#D9D9D9AB]">
                     {item?.percent}
                   </p>
                 </div>
@@ -198,9 +294,9 @@ const Home = () => {
             return (
               <HeaderButton
                 key={item?.id}
-                onClick={() => handleMenuClick(item?.id)}
+                onClick={() => handleMenuClick(item?.id, item.name)}
                 value={item?.id}
-                ariaLabel={`Selected-${item?.title}`}
+                aria-label={`Selected-${item?.title}`}
                 icon={
                   <IconComponent
                     fillColor={
@@ -226,27 +322,48 @@ const Home = () => {
           className="mt-15 max-w-[810px] h-20 rounded-full px-7"
           placeholder="Поиск направлений"
         />
-        <div className="absolute right-2 top-17 flex items-center justify-center bg-[#03559E] w-16 h-16 rounded-full cursor-pointer">
+        <div className="absolute right-2 top-[17px] flex items-center justify-center bg-[#03559E] w-16 h-16 rounded-full cursor-pointer">
           <Search />
         </div>
       </div>
 
       <div className="max-w-[1800px] mx-auto">
         <h2 className="text-[28px] font-semibold leading-9 mt-15 mb-8">
-          Дачные дома
+          restaurants
         </h2>
         <div className="grid-container">
-          {resorts?.map((item) => (
+          {restaurants?.map((item) => (
             <Card key={item?.id} item={item} />
           ))}
         </div>
+      </div>
 
-        <h2 className="text-[28px] font-semibold leading-9 mt-15 mb-8">
-          Санатории
-        </h2>
+      <div className="max-w-[1800px] mx-auto">
+        <div className="flex items-center justify-between">
+          <h2 className="text-[28px] font-semibold leading-9 mt-15 mb-8">
+            Cinemas
+          </h2>
+          <Button className="flex items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+            >
+              <g fill="none" stroke="currentColor" strokeLinejoin="round">
+                <path strokeWidth="3" d="M12 11h.01v.01H12z" />
+                <path
+                  strokeWidth="2"
+                  d="m12 22l5.5-5.5a7.778 7.778 0 1 0-11 0z"
+                />
+              </g>
+            </svg>
+            Просмотрите карту
+          </Button>
+        </div>
         <div className="grid-container">
-          {resorts?.map((item) => (
-            <Card key={item?.id} item={item} />
+          {cinemas?.map((item) => (
+            <CinemaCard cinema={item} key={item?.id} />
           ))}
         </div>
       </div>

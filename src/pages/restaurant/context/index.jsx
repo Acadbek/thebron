@@ -1,12 +1,22 @@
 import React from "react";
 
-export const SceneContext = React.createContext();
+export const RestaurantContext = React.createContext();
 
-export const SceneProvider = ({ children }) => {
+export const RestaurantProvider = ({ children }) => {
   const [chair, setChair] = React.useState(5);
+
+  const [quantity, setQuantity] = React.useState(1);
+
+  const increaseQuantity = () => setQuantity((q) => q + 1);
+  const decreaseQuantity = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
+
   return (
-    <SceneContext.Provider value={{ chair, setChair }}>
+    <RestaurantContext.Provider
+      value={{ chair, setChair, quantity, increaseQuantity, decreaseQuantity }}
+    >
       {children}
-    </SceneContext.Provider>
+    </RestaurantContext.Provider>
   );
 };
+
+export const useRestaurant = () => React.useContext(RestaurantContext);

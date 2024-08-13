@@ -8,13 +8,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import React from "react";
-import { SceneContext } from "../context";
+import { RestaurantContext } from "../context";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { uz, ru, enUS } from "date-fns/locale";
 
 const LeftSide = () => {
-  const { setChair } = React.useContext(SceneContext);
+  const { setChair } = React.useContext(RestaurantContext);
   const [date, setDate] = React.useState(new Date());
   const select = (value) => {
     setChair(value);
@@ -59,6 +59,14 @@ const LeftSide = () => {
         selected={date}
         onSelect={setDate}
         className="rounded-md mt-4 flex items-center justify-center border"
+        // classNames={{
+        //   months: "bg-red-400",
+        //   month: "space-y-4 w-full flex flex-col",
+        //   table: "w-full h-full border-collapse space-y-1",
+        //   caption_label: "text-lg", // change font size as per your need
+        //   row: "w-full mt-2 bg-transparent",
+        //   day: "text-lg w-16 h-16 rounded-sm",
+        // }}
       />
       <Button className="w-full mt-4">Ok</Button>
     </div>

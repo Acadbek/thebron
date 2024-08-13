@@ -18,6 +18,12 @@ const Bron = lazy(() =>
     .catch(handleCatchChunkError),
 );
 
+const Cinema = lazy(() =>
+  import("@/pages")
+    .then(({ Cinema }) => ({ default: Cinema }))
+    .catch(handleCatchChunkError),
+);
+
 const News = lazy(() =>
   import("@/pages")
     .then(({ News }) => ({ default: News }))
@@ -48,4 +54,4 @@ const Login = lazy(() =>
     .catch(handleCatchChunkError),
 );
 
-export { Home, News, Login, Bron, Account, Restaurant, RestaurantSlug };
+export { Home, News, Login, Bron, Account, Restaurant, RestaurantSlug, Cinema };

@@ -5,7 +5,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useGetResortByIDQuery } from "@/features/resort";
 import formatNumber from "@/lib/format";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -18,8 +18,10 @@ import { useEffect, useRef, useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { addDays } from "date-fns";
 import ScrollToTop from "@/components/ScrollToTop";
+import ShoppingList from "./components/shopping-card";
 
 export const Bron = () => {
+  const location = useLocation();
   const [date, setDate] = useState({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
@@ -30,6 +32,7 @@ export const Bron = () => {
   const [childCount, setChildCount] = useState(0);
   const [babies, setBabies] = useState(0);
   const [pets, setPets] = useState(0);
+  const [restaurantsPage, setRestaurantPage] = useState(false);
   const checkboxLabel = useRef();
   const radioItem = useRef();
   const radioItem2 = useRef();
@@ -37,10 +40,31 @@ export const Bron = () => {
   const paymentRadio2 = useRef();
   const paymentRadio3 = useRef();
   const paymentRadio4 = useRef();
-  const { id } = useParams();
-  const { data: resort } = useGetResortByIDQuery(id);
+  const params = useParams();
+  const { data: resort } = useGetResortByIDQuery(params.id);
   const { bron } = useSelector((store) => store);
   const navigate = useNavigate();
+
+  const shoppingProducts = [
+    {
+      id: 1,
+      name: "Product name",
+      price: 100000,
+      count: 1,
+    },
+    {
+      id: 2,
+      name: "Product name 2",
+      price: 200000,
+      count: 1,
+    },
+    {
+      id: 3,
+      name: "Product name 3",
+      price: 300000,
+      count: 1,
+    },
+  ];
 
   const handleBackClick = () => {
     navigate(-1);
@@ -70,6 +94,19 @@ export const Bron = () => {
   };
 
   useEffect(() => {
+    if (!location.pathname.includes("resorts")) {
+      setRestaurantPage(true);
+    } else {
+      setRestaurantPage(false);
+    }
+  }, [location.pathname]);
+
+  const stickyOrNot = () => {
+    return location.pathname.includes("resorts") ? "sticky top-28" : "";
+  };
+
+  useEffect(() => {
+    console.log();
     radioItem.current.parentElement.classList.add("border-black");
     radioItem.current.addEventListener("click", choosePaymentStatus);
     radioItem2.current.addEventListener("click", choosePaymentStatus);
@@ -516,7 +553,7 @@ export const Bron = () => {
           </Button>
         </div>
         <div col-span-6>
-          <div sticky w-full top-28>
+          <div className={`${stickyOrNot()} w-full `}>
             <Card className="max-w-[490px] ml-[170px]" pt="32px">
               <CardContent w-full>
                 <div flex items-center gap="16px">
@@ -527,7 +564,10 @@ export const Bron = () => {
                       object-cover
                       h-full
                       width={120}
-                      src={resort?.images[0]?.img}
+                      src={
+                        resort?.images[0]?.img ||
+                        "https://adventuresoflilnicki.com/wp-content/uploads/2020/07/Lagman-at-Injis-Restaurant-Olay-Bazaar-Tashkent-Uzbekistan.jpg"
+                      }
                       alt=""
                     />
                   </div>
@@ -616,6 +656,16 @@ export const Bron = () => {
               </CardContent>
             </Card>
           </div>
+          {restaurantsPage && (
+            <>
+              <div className="border-t max-w-[490px] ml-[170px] mt-10"></div>
+              <div className="max-w-[490px] ml-[170px] mt-10">
+                {shoppingProducts.map((item) => (
+                  <ShoppingList key={item.id} item={item} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

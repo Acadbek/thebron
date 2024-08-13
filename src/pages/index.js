@@ -5,5 +5,6 @@ import Bron from "./bron";
 import Restaurant from "./restaurant";
 import RestaurantSlug from "./restaurant/slug";
 import Account from "./account";
+import Cinema from "./cinema";
 
-export { Home, News, Login, Bron, Account, Restaurant, RestaurantSlug };
+export { Home, News, Login, Bron, Account, Restaurant, RestaurantSlug, Cinema };

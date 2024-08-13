@@ -2,8 +2,7 @@ import React, { Suspense, useMemo } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Html, Bounds, useBounds } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { SceneContext } from "../context";
-import * as THREE from "three";
+import { RestaurantContext } from "../context";
 
 const Loader = () => (
   <Html center>
@@ -28,15 +27,19 @@ const ChairModel = ({ position, rotation }) => {
 
 const TableModel = ({ position }) => {
   const gltf = useLoader(GLTFLoader, "/models/table.glb");
-  const clone = useMemo(() => gltf.scene.clone(), [gltf]);
+  const clone = useMemo(() => {
+    const scene = gltf.scene.clone();
+    scene.name = "table"; // Assign a name or use scene.userData to tag the object
+    return scene;
+  }, [gltf]);
 
   return <primitive object={clone} position={position} scale={4} />;
 };
 
 const Scene = () => {
-  const { chair } = React.useContext(SceneContext);
+  const { chair } = React.useContext(RestaurantContext);
 
-  const numTables = 8; // Total number of tables
+  const numTables = 12; // Total number of tables
   const numChairsPerTable = chair;
   const tableSpacing = 15;
   const chairRadius = 3.5;
@@ -68,9 +71,12 @@ const Scene = () => {
     const api = useBounds();
     return (
       <group
-        onClick={(e) => (
-          e.stopPropagation(), e.delta <= 2 && api.refresh(e.object).fit()
-        )}
+        onClick={(e) => {
+          e.stopPropagation(),
+            e.delta <= 2 &&
+              e.object.userData.name.includes("table") &&
+              api.refresh(e.object).fit();
+        }}
         onPointerMissed={(e) => e.button === 0 && api.refresh().fit()}
       >
         {children}
@@ -82,7 +88,7 @@ const Scene = () => {
     <Suspense fallback={<Loader />}>
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} intensity={1} castShadow />
-      <Bounds fit clip margin={1.2}>
+      <Bounds fit clip margin={1.5}>
         <SelectToZoom>
           {Array.from({ length: numTables }).map((_, index) => {
             const row = Math.floor(index / columns);

@@ -17,22 +17,6 @@ export const Tabs = () => {
       >
         Войти
       </li>
-      <li
-        style={{ borderColor: tab === 2 && "#03559E" }}
-        onClick={(e) => handelClick(e)}
-        data-v="2"
-        className="cursor-pointer pr-4 pb-2 py-2 font-medium border-b-2 border-transparent"
-      >
-        Запросы на вход
-      </li>
-      <li
-        style={{ borderColor: tab === 3 && "#03559E" }}
-        onClick={(e) => handelClick(e)}
-        data-v="3"
-        className="cursor-pointer pr-4 pb-2 py-2 border-b-2 font-medium border-transparent"
-      >
-        Совместный доступ
-      </li>
     </ul>
   );
 };

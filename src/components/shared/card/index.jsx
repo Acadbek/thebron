@@ -10,7 +10,7 @@ import { format as f } from "date-fns";
 
 const Card = ({ item }) => {
   return (
-    <NavLink to={String("/resorts/" + item.id)}>
+    <NavLink to={String("/restaurants/" + item.id)}>
       <Toggle aria-label="Toggle bold">
         <svg
           width="25"

@@ -1,9 +1,10 @@
 import { AuthLayout, HomeLayout } from "@/layouts";
 import {
   Home,
+  Bron,
   News,
   Login,
-  Bron,
+  Cinema,
   Account,
   Restaurant,
   RestaurantSlug,
@@ -63,10 +64,19 @@ const Router = () => {
           />
 
           <Route
-            path="/restaurant/:id"
+            path="/restaurants/:id"
             element={
               <Suspense fallback={<Loader />}>
-                <RestaurantSlug />
+                <Restaurant />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/restaurants/:id/bron"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Bron />
               </Suspense>
             }
           />
@@ -104,6 +114,15 @@ const Router = () => {
             element={
               <Suspense fallback={<Loader />}>
                 <PersonalInformation />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/cinema/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Cinema />
               </Suspense>
             }
           />

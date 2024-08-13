@@ -4,7 +4,7 @@ import MenuTabComponent from "./components/MenuTabComponent";
 import ReviewTabComponent from "./components/ReviewTabComponent";
 import LikedTabComponent from "./components/LikedTabComponent";
 
-const TabsComponent = () => {
+const TabsComponent = ({ foodData }) => {
   return (
     <Tabs defaultValue="Menu" className="mt-10">
       <TabsList className="bg-primary text-white w-[420px]">
@@ -84,7 +84,7 @@ const TabsComponent = () => {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="Menu">
-        <MenuTabComponent />
+        <MenuTabComponent foodData={foodData} />
       </TabsContent>
       <TabsContent value="About">
         <AboutTabComponent />
