@@ -1,4 +1,10 @@
 {
+  "year": "Yil",
+  "genre": "Janr",
+  "info": "Ma'lumot",
+  "gotoback": "Orqaga qaytish",
+  "time": "Vaqt",
+  "reviews": "Sharxlar",
   "today": "Bugun",
   "tomorrow": "Ertaga",
   "social-media-accounts": "Ijtimoiy tarmoqlar",

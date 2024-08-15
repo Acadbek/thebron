@@ -8,9 +8,9 @@ import { Toggle } from "@/components/ui/toggle";
 import format from "@/lib/format";
 import { format as f } from "date-fns";
 
-const Card = ({ item }) => {
+const Card = ({ item, path }) => {
   return (
-    <NavLink to={String("/restaurants/" + item.id)}>
+    <NavLink to={String(path + "/" + item.id)}>
       <Toggle aria-label="Toggle bold">
         <svg
           width="25"

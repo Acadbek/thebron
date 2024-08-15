@@ -333,7 +333,18 @@ const Home = () => {
         </h2>
         <div className="grid-container">
           {restaurants?.map((item) => (
-            <Card key={item?.id} item={item} />
+            <Card path="restaurants" key={item?.id} item={item} />
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-[1800px] mx-auto">
+        <h2 className="text-[28px] font-semibold leading-9 mt-15 mb-8">
+          Resorts
+        </h2>
+        <div className="grid-container">
+          {resorts?.map((item) => (
+            <Card path="resorts" key={item?.id} item={item} />
           ))}
         </div>
       </div>

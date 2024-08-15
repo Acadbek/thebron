@@ -6,5 +6,16 @@ import Restaurant from "./restaurant";
 import RestaurantSlug from "./restaurant/slug";
 import Account from "./account";
 import Cinema from "./cinema";
+import Places from "./cinema/places";
 
-export { Home, News, Login, Bron, Account, Restaurant, RestaurantSlug, Cinema };
+export {
+  Home,
+  News,
+  Login,
+  Bron,
+  Account,
+  Restaurant,
+  RestaurantSlug,
+  Cinema,
+  Places,
+};

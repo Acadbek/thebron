@@ -8,6 +8,7 @@ import {
   Account,
   Restaurant,
   RestaurantSlug,
+  Places,
 } from "./lazy";
 import { Routes, Route } from "react-router-dom";
 import { Suspense } from "react";
@@ -123,6 +124,15 @@ const Router = () => {
             element={
               <Suspense fallback={<Loader />}>
                 <Cinema />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/cinema/:id/places"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Places />
               </Suspense>
             }
           />

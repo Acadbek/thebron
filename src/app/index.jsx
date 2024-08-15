@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import i18n from "@/lib/i18n";
 import TabProvider from "@/pages/account/login-and-security/context";
+import { CinemaProvider } from "@/pages/cinema/context";
 import { RestaurantProvider } from "@/pages/restaurant/context";
 import Router from "@/router";
 import { store } from "@/store/store";
@@ -15,9 +16,11 @@ function App() {
         <TabProvider>
           <I18nextProvider i18n={i18n}>
             <RestaurantProvider>
-              <ThemeProvider defaultTheme="light" storageKey="the-bron-theme">
-                <Router />
-              </ThemeProvider>
+              <CinemaProvider>
+                <ThemeProvider defaultTheme="light" storageKey="the-bron-theme">
+                  <Router />
+                </ThemeProvider>
+              </CinemaProvider>
             </RestaurantProvider>
           </I18nextProvider>
         </TabProvider>

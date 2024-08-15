@@ -1,4 +1,10 @@
 {
+  "year": "Year",
+  "info": "Info",
+  "gotoback": "Go back",
+  "genre": "Genre",
+  "time": "Time",
+  "reviews": "Reviews",
   "today": "Today",
   "tomorrow": "Tomorrow",
   "password": "Password",
