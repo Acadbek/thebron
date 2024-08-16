@@ -7,7 +7,7 @@ export const CinemaProvider = ({ children }) => {
   const [selectedTime, setSelectedTime] = React.useState(null);
   const [selectedDate, setSelectedDate] = React.useState(null);
   const [selectedSeats, setSelectedSeats] = React.useState([]);
-  const [selectedMovie, setSelectedMovie] = React.useState(null);
+  // const [selectedMovie, setSelectedMovie] = React.useState(null);
 
   return (
     <CinemaContext.Provider

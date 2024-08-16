@@ -6,47 +6,66 @@ import { useTranslation } from "react-i18next";
 import { StarIcon2 } from "@/assets/icons";
 import TypeChairs from "./components/type-chairs";
 
-const Chair = ({ isSelected, onClick, index }) => {
+const Chair = ({ isSelected, onClick, index, taken }) => {
+  const blue = "#03559E";
+  const gray = "#f8f8f8";
+  const whiteGray = "#d9d9d9";
+  const blueGray = "#DBF2F8";
+
   return (
     <svg
-      className="cursor-pointer"
+      className={!taken ? "cursor-pointer" : "cursor-not-allowed"}
       xmlns="http://www.w3.org/2000/svg"
       width="42"
       height="42"
       viewBox="0 0 24 24"
-      onClick={onClick} // Handle click event
+      onClick={() => !taken && onClick()}
     >
-      {/* Backrest */}
-      <path
-        stroke={"#7a7a7a"}
-        strokeWidth="0.5"
-        fill={isSelected ? "#DBF2F8" : "#f8f8f8"} // Conditional fill color
-        d="M5 21q-.425 0-.712-.288T4 20v-1q-1.25 0-2.125-.875T1 16v-5q0-.825.588-1.412T3 9t1.413.588T5 11v4h14v-4q0-.825.588-1.412T21 9t1.413.588T23 11v5q0 1.25-.875 2.125T20 19v1q0 .425-.288.713T19 21t-.712-.288T18 20v-1H6v1q0 .425-.288.713T5 21m2-8v-2q0-1.375-.837-2.463T4 7V6q0-1.25.875-2.125T7 3h10q1.25 0 2.125.875T20 6v1q-1.35.35-2.175 1.463T17 11v2z"
-      />
-      {/* Seat */}
-      <path
-        fill={isSelected ? "#03559E" : "#d9d9d9"} // Conditional fill color
-        d="M5 21q-.425 0-.712-.288T4 20v-1q-1.25 0-2.125-.875T1 16v-5q0-.825.588-1.412T3 9t1.413.588T5 11v4h14v-4q0-.825.588-1.412T21 9t1.413.588T23 11v5q0 1.25-.875 2.125T20 19v1q0 .425-.288.713T19 21t-.712-.288T18 20v-1H6v1q0 .425-.288.713T5 21z"
-      />
-      {/* Index text */}
+      {!taken ? (
+        <>
+          <path
+            stroke={"#7a7a7a"}
+            strokeWidth="0.5"
+            fill={isSelected ? blueGray : gray}
+            d="M5 21q-.425 0-.712-.288T4 20v-1q-1.25 0-2.125-.875T1 16v-5q0-.825.588-1.412T3 9t1.413.588T5 11v4h14v-4q0-.825.588-1.412T21 9t1.413.588T23 11v5q0 1.25-.875 2.125T20 19v1q0 .425-.288.713T19 21t-.712-.288T18 20v-1H6v1q0 .425-.288.713T5 21m2-8v-2q0-1.375-.837-2.463T4 7V6q0-1.25.875-2.125T7 3h10q1.25 0 2.125.875T20 6v1q-1.35.35-2.175 1.463T17 11v2z"
+          />
+          <path
+            fill={isSelected ? blue : whiteGray}
+            d="M5 21q-.425 0-.712-.288T4 20v-1q-1.25 0-2.125-.875T1 16v-5q0-.825.588-1.412T3 9t1.413.588T5 11v4h14v-4q0-.825.588-1.412T21 9t1.413.588T23 11v5q0 1.25-.875 2.125T20 19v1q0 .425-.288.713T19 21t-.712-.288T18 20v-1H6v1q0 .425-.288.713T5 21z"
+          />
+        </>
+      ) : (
+        <>
+          <path
+            stroke={"red"}
+            strokeWidth="0.8"
+            fill={"#E9AEAE"}
+            d="M5 21q-.425 0-.712-.288T4 20v-1q-1.25 0-2.125-.875T1 16v-5q0-.825.588-1.412T3 9t1.413.588T5 11v4h14v-4q0-.825.588-1.412T21 9t1.413.588T23 11v5q0 1.25-.875 2.125T20 19v1q0 .425-.288.713T19 21t-.712-.288T18 20v-1H6v1q0 .425-.288.713T5 21m2-8v-2q0-1.375-.837-2.463T4 7V6q0-1.25.875-2.125T7 3h10q1.25 0 2.125.875T20 6v1q-1.35.35-2.175 1.463T17 11v2z"
+          />
+          <path
+            fill={"#C13515"}
+            d="M5 21q-.425 0-.712-.288T4 20v-1q-1.25 0-2.125-.875T1 16v-5q0-.825.588-1.412T3 9t1.413.588T5 11v4h14v-4q0-.825.588-1.412T21 9t1.413.588T23 11v5q0 1.25-.875 2.125T20 19v1q0 .425-.288.713T19 21t-.712-.288T18 20v-1H6v1q0 .425-.288.713T5 21z"
+          />
+        </>
+      )}
+      <text
+        x="12" // Horizontal position
+        y="9" // Vertical position
+        textAnchor="middle" // Center the text
+        fontSize="6" // Font size
+        fill={isSelected ? "#03559E" : "#333"} // Text color
+      >
+        {index + 1}
+      </text>
     </svg>
   );
 };
-
-// <text
-//   x="12" // Horizontal position
-//   y="9" // Vertical position
-//   textAnchor="middle" // Center the text
-//   fontSize="6" // Font size
-//   fill={isSelected ? "#03559E" : "#333"} // Text color
-// >
-//   {index + 1}
-// </text>
 
 const Places = () => {
   const [selectedSeats, setSelectedSeats] = useState(new Set());
 
   const toggleSeatSelection = (index) => {
+    console.log("hello");
     setSelectedSeats((prev) => {
       const newSelectedSeats = new Set(prev);
       if (newSelectedSeats.has(index)) {
@@ -64,6 +83,8 @@ const Places = () => {
   const navigate = useNavigate();
   const { selectedTime } = useCinema();
   const { t } = useTranslation();
+
+  const takenPlaces = [1, 4, 9, 34, 42, 89, 7, 129, 77];
 
   return (
     <div>
@@ -115,6 +136,7 @@ const Places = () => {
               <Chair
                 index={index}
                 key={index}
+                taken={takenPlaces.includes(index + 1)}
                 isSelected={selectedSeats.has(index)}
                 onClick={() => toggleSeatSelection(index)}
               />
@@ -123,6 +145,7 @@ const Places = () => {
           <div className="grid grid-cols-11 gap-1">
             {middle.map((seat, index) => (
               <Chair
+                taken={takenPlaces.includes(index + left.length + 1)}
                 index={index + left.length}
                 key={index + left.length}
                 isSelected={selectedSeats.has(index + left.length)}
@@ -134,6 +157,9 @@ const Places = () => {
             {right.map((seat, index) => (
               <Chair
                 index={index + left.length + middle.length}
+                taken={takenPlaces.includes(
+                  index + left.length + middle.length + 1,
+                )}
                 key={index + left.length + middle.length}
                 isSelected={selectedSeats.has(
                   index + left.length + middle.length,
