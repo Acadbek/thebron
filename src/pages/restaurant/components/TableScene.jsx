@@ -11,9 +11,13 @@ const Loader = () => (
 );
 
 const ChairModel = ({ position, rotation }) => {
-  const gltf = useLoader(GLTFLoader, "/models/chair.glb");
-  const clone = useMemo(() => gltf.scene.clone(), [gltf]);
+  const { scene } = useLoader(GLTFLoader, "/models/chair.glb", (loader) => {
+    loader.manager.onError = (url) => {
+      console.error(`An error occurred loading the model at ${url}`);
+    };
+  });
 
+  const clone = useMemo(() => scene.clone(), [scene]);
   return (
     <primitive
       object={clone}
@@ -26,12 +30,26 @@ const ChairModel = ({ position, rotation }) => {
 };
 
 const TableModel = ({ position }) => {
-  const gltf = useLoader(GLTFLoader, "/models/table.glb");
-  const clone = useMemo(() => {
-    const scene = gltf.scene.clone();
-    scene.name = "table"; // Assign a name or use scene.userData to tag the object
-    return scene;
-  }, [gltf]);
+  const { scene, error } = useLoader(
+    GLTFLoader,
+    "/models/table.glb",
+    (loader) => {
+      loader.manager.onError = (url) => {
+        console.error(`Error loading model at ${url}`);
+      };
+    },
+  );
+
+  if (error) {
+    console.error("Error loading GLTF model:", error);
+    return null; // Or return a fallback UI
+  }
+
+  const clone = React.useMemo(() => {
+    const clonedScene = scene.clone();
+    clonedScene.name = "table";
+    return clonedScene;
+  }, [scene]);
 
   return <primitive object={clone} position={position} scale={4} />;
 };
