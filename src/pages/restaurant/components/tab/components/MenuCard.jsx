@@ -12,7 +12,7 @@ const MenuCard = ({ item }) => {
     <div className="max-w-sm mx-auto bg-white rounded-lg overflow-hidden">
       <img
         className="w-[360px] h-[360px] object-cover mx-auto rounded-lg"
-        src="https://via.placeholder.com/360x360"
+        src={item.img}
         alt="Card image"
       />
 
