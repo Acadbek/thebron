@@ -151,32 +151,28 @@ export const Bron = () => {
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4">
-              <div flex items-center justify-between>
-                <p flex justify-center flex-col>
-                  <span text-base font-bold leading-6>
+              <div className="flex items-center justify-between">
+                <p className="flex justify-center flex-col">
+                  <span className="text-base font-bold leading-6">
                     Взрослые
                   </span>
-                  <span text="14px" font-normal leading-6>
+                  <span className="text-[14px] font-normal leading-6">
                     От 13 лет
                   </span>
                 </p>
-                <div flex items-center gap="12px">
+                <div className="flex items-center gap-[12px]">
                   <Button
-                    w="40px"
-                    h="40px"
-                    className="rounded-full"
+                    className="rounded-full w-[40px] h-[40px]"
                     variant="outline"
                     onClick={() => setAge((prev) => prev - 1)}
                   >
                     -
                   </Button>
-                  <span text-center text-xl font-medium leading-6>
+                  <span className="text-center text-xl font-medium leading-6">
                     {ageCount}
                   </span>
                   <Button
-                    w="40px"
-                    h="40px"
-                    className="rounded-full"
+                    className="rounded-full  w-[40px] h-[40px]"
                     variant="outline"
                     onClick={() => setAge((prev) => prev + 1)}
                   >
@@ -184,32 +180,26 @@ export const Bron = () => {
                   </Button>
                 </div>
               </div>
-              <div flex items-center justify-between>
-                <p flex justify-center flex-col>
-                  <span text-base font-bold leading-6>
-                    Дети
-                  </span>
-                  <span text="14px" font-normal leading-6>
+              <div className="flex items-center justify-between">
+                <p className=" flex justify-center flex-col">
+                  <span className="text-base font-bold leading-6">Дети</span>
+                  <span className="text-[14px] font-normal leading-6">
                     2-12 лет
                   </span>
                 </p>
-                <div flex items-center gap="12px">
+                <div className="flex items-center gap-[12px]">
                   <Button
-                    w="40px"
-                    h="40px"
-                    className="rounded-full"
+                    className="rounded-full w-[40px] h-[40px]"
                     variant="outline"
                     onClick={() => setChildCount((prev) => prev - 1)}
                   >
                     -
                   </Button>
-                  <span text-center text-xl font-medium leading-6>
+                  <span className="text-center text-xl font-medium leading-6">
                     {childCount}
                   </span>
                   <Button
-                    w="40px"
-                    h="40px"
-                    className="rounded-full"
+                    className="rounded-full w-[40px] h-[40px]"
                     variant="outline"
                     onClick={() => setChildCount((prev) => prev + 1)}
                   >
@@ -217,32 +207,28 @@ export const Bron = () => {
                   </Button>
                 </div>
               </div>
-              <div flex items-center justify-between>
-                <p flex justify-center flex-col>
-                  <span text-base font-bold leading-6>
+              <div className="flex items-center justify-between">
+                <p className="flex justify-center flex-col">
+                  <span className="text-base font-bold leading-6">
                     Младенцы
                   </span>
-                  <span text="14px" font-normal leading-6>
-                    Младше 2{" "}
+                  <span className="text-[14px] font-normal leading-6">
+                    Младше 2
                   </span>
                 </p>
-                <div flex items-center gap="12px">
+                <div className="flex items-center gap-[12px]">
                   <Button
-                    w="40px"
-                    h="40px"
-                    className="rounded-full"
+                    className="rounded-full w-[40px] h-[40px]"
                     variant="outline"
                     onClick={() => setBabies((prev) => prev - 1)}
                   >
                     -
                   </Button>
-                  <span text-center text-xl font-medium leading-6>
+                  <span className="text-center text-xl font-medium leading-6">
                     {babies}
                   </span>
                   <Button
-                    w="40px"
-                    h="40px"
-                    className="rounded-full"
+                    className="rounded-full w-[40px] h-[40px]"
                     variant="outline"
                     onClick={() => setBabies((prev) => prev + 1)}
                   >
@@ -250,32 +236,28 @@ export const Bron = () => {
                   </Button>
                 </div>
               </div>
-              <div flex items-center justify-between>
-                <p flex justify-center flex-col>
-                  <span text-base font-bold leading-6>
+              <div className="flex items-center justify-between">
+                <p className="flex justify-center flex-col">
+                  <span className="text-base font-bold leading-6">
                     Домашние животные
                   </span>
-                  <span text="14px" font-normal leading-6>
+                  <span className="text-[14px] font-normal leading-6">
                     Младше 2
                   </span>
                 </p>
-                <div flex items-center gap="12px">
+                <div className="flex items-center gap-[12px]">
                   <Button
-                    w="40px"
-                    h="40px"
-                    className="rounded-full"
+                    className="rounded-full w-[40px] h-[40px]"
                     variant="outline"
                     onClick={() => setPets((prev) => prev - 1)}
                   >
                     -
                   </Button>
-                  <span text-center text-xl font-medium leading-6>
+                  <span className="text-center text-xl font-medium leading-6">
                     {pets}
                   </span>
                   <Button
-                    w="40px"
-                    h="40px"
-                    className="rounded-full"
+                    className="rounded-full w-[40px] h-[40px]"
                     variant="outline"
                     onClick={() => setPets((prev) => prev + 1)}
                   >
@@ -290,17 +272,12 @@ export const Bron = () => {
           </DialogContent>
         )}
       </Dialog>
-      <div grid grid-cols-12 max-w="1470px" mx-auto>
-        <div col-span-6>
-          <div relative flex items-center>
+      <div className="grid grid-cols-12 max-w-[1470px] mx-auto">
+        <div className="col-span-6">
+          <div className="relative flex items-center">
             <div
               onClick={handleBackClick}
-              cursor-pointer
-              absolute
-              left="-45px"
-              p-3
-              hover:bg-gray-1
-              rounded-full
+              className="cursor-pointer absolute left-[-45px] p-3 hover:bg-gray-100 rounded-full"
             >
               <svg
                 width="16"
@@ -315,21 +292,17 @@ export const Bron = () => {
                 />
               </svg>
             </div>
-            <p text-black text="28px" font-bold leading-9>
+            <p className="text-black text-2xl font-bold leading-9">
               Потвердите и оплатите
             </p>
           </div>
-          <p text-black text="24px" font-bold leading-9 mt="40px">
+          <p className="text-black text-2xl font-bold leading-9 mt-10">
             Ваша поездка
           </p>
-          <div flex items-center justify-between mt="24px">
+          <div className="flex items-center justify-between mt-6">
             <div>
-              <p text-black text-xl font-bold leading-7>
-                Даты
-              </p>
-              <p text-black text-lg leading-6 mt-1>
-                09-12 февр.
-              </p>
+              <p className="text-black text-xl font-bold leading-7">Даты</p>
+              <p className="text-black text-lg leading-6 mt-1">09-12 февр.</p>
             </div>
             <div>
               <Button onClick={() => handleModal(1)} underline variant="ghost">
@@ -337,23 +310,25 @@ export const Bron = () => {
               </Button>
             </div>
           </div>
-          <div flex items-center justify-between mt="24px">
+          <div className="flex items-center justify-between mt-6">
             <div>
-              <p text-black text-xl font-bold leading-7>
-                Гости
-              </p>
-              <p text-black text-lg leading-6 font-normal mt-1>
+              <p className="text-black text-xl font-bold leading-7">Гости</p>
+              <p className="text-black text-lg leading-6 font-normal mt-1">
                 1 гость
               </p>
             </div>
             <div>
-              <Button onClick={() => handleModal(2)} underline variant="ghost">
+              <Button
+                onClick={() => handleModal(2)}
+                variant="ghost"
+                className="underline"
+              >
                 Изменить
               </Button>
             </div>
           </div>
-          <div border-b mt="24px"></div>
-          <p text-black text="24px" font-bold leading-9 mt="40px">
+          <div className="border-b mt-6"></div>
+          <p className="text-black text-2xl font-bold leading-9 mt-10">
             Варианты оплаты
           </p>
           <RadioGroup defaultValue="1" className="gap-0 mt-[24px]">
@@ -362,16 +337,20 @@ export const Bron = () => {
               htmlFor="r1"
               className="radio-checkbox flex cursor-pointer items-center space-x-2 justify-between px-[12px] py-[14px] border rounded-t-[10px]"
             >
-              <div flex flex-col>
-                <Label cursor-pointer htmlFor="r1">
-                  <span text-black text-xl font-bold leading-7>
-                    Оплатите посностью
-                  </span>
+              <div className="flex flex-col">
+                <Label
+                  cursor-pointer
+                  htmlFor="r1"
+                  className="text-black text-xl font-bold leading-7"
+                >
+                  Оплатите полностью
                 </Label>
-                <Label cursor-pointer htmlFor="r1">
-                  <span text-black text-lg font-normal leading-6>
-                    Уплатите полную сумму ({formatNumber(bron?.amount)})
-                  </span>
+                <Label
+                  cursor-pointer
+                  htmlFor="r1"
+                  className="text-black text-lg font-normal leading-6"
+                >
+                  Уплатите полную сумму ({formatNumber(bron?.amount)})
                 </Label>
               </div>
               <RadioGroupItem
@@ -387,24 +366,19 @@ export const Bron = () => {
               htmlFor="r2"
               className="radio-checkbox flex cursor-pointer items-center justify-between space-x-2 px-[12px] py-[14px] border rounded-b-[10px]"
             >
-              <div flex flex-col gap="8px">
+              <div className="flex flex-col gap-[8px]">
                 <Label
                   cursor-pointer
                   htmlFor="r2"
-                  text-black
-                  text-xl
-                  font-bold
-                  leading-7
+                  className="text-black text-xl font-bold leading-7"
                 >
                   Оплатите часть сейчас, а остаток внесите позже
                 </Label>
                 <Label cursor-pointer htmlFor="r2">
-                  <span text-black text-lg font-400 leading-6>
-                    000 000 сумм к оплате сегодня, 000 000сумм- 24 март.2024 г.
-                    Без дополнительных сборов.
-                    <span underline ml-3 font-bold>
-                      Подробнее
-                    </span>
+                  <span className="text-black text-lg font-normal leading-6">
+                    000 000 сумм к оплате сегодня, 000 000 сумм - 24 март. 2024
+                    г. Без дополнительных сборов.
+                    <span className="underline ml-3 font-bold">Подробнее</span>
                   </span>
                 </Label>
               </div>
@@ -417,8 +391,8 @@ export const Bron = () => {
               />
             </Label>
           </RadioGroup>
-          <div border-b mt="36px"></div>
-          <p text-black text="24px" font-bold leading-9 mt="48px">
+          <div className="border-b mt-[36px]"></div>
+          <p className="text-black text-[24px] font-bold leading-9 mt-[48px]">
             Чем оплатить
           </p>
           <RadioGroup mt="24px">
@@ -434,10 +408,7 @@ export const Bron = () => {
                 id="option-1"
               />
               <img
-                width={113}
-                height={80}
-                cursor-pointer
-                object-cover
+                className="cursor-pointer object-cover w-[113px] h-[80px]"
                 src="/src/assets/images/payme-logo.png"
                 alt=""
               />
@@ -454,12 +425,7 @@ export const Bron = () => {
                 id="option-2"
               />
               <img
-                width={113}
-                height={80}
-                cursor-pointer
-                w="113px"
-                object-cover
-                h="80px"
+                className="cursor-pointer object-cover w-[113px] h-[80px]"
                 src="/src/assets/images/uzum-logo.png"
                 alt=""
               />
@@ -476,10 +442,7 @@ export const Bron = () => {
                 id="option-3"
               />
               <img
-                object-cover
-                cursor-pointer
-                width={113}
-                height={80}
+                className="object-cover cursor-pointer w-[113px] h-[80px]"
                 src="/src/assets/images/solfy-logo.png"
                 alt=""
               />
@@ -496,51 +459,58 @@ export const Bron = () => {
                 id="option-4"
               />
               <img
-                cursor-pointer
+                className=" cursor-pointer"
                 src="/src/assets/images/mastercard-logo.png"
                 alt=""
               />
             </Label>
           </RadioGroup>
-          <div border-b mt="60px"></div>
-          <p text-black text="24px" font-bold leading-9 mt="48px">
+          <div className="border-b mt-16"></div>
+          <p className="text-black text-2xl font-bold leading-9 mt-12">
             Требуется для поездки
           </p>
-          <div flex justify-between items-center mt="16px" gap="95px">
-            <div flex flex-col items-start>
-              <p text-black text-xl font-bold leading-7>
+
+          <div className="flex justify-between items-center mt-4 gap-24">
+            <div className="flex flex-col items-start">
+              <p className="text-black text-xl font-bold leading-7">
                 Номер телефона
               </p>
-              <p text-black text-lg mt="8px" font-normal leading-6>
+              <p className="text-black text-lg mt-2 font-normal leading-6">
                 Добавьте и подтвердите номер телефона, чтобы получать новости о
                 поездке.
               </p>
             </div>
             <Button variant="outline">Добавить</Button>
           </div>
-          <div flex justify-between items-center gap="95px">
-            <div flex flex-col items-start>
-              <p text-black text="24px" font-bold leading-9 mt="40px">
+
+          <div className="flex justify-between items-center gap-24">
+            <div className="flex flex-col items-start">
+              <p className="text-black text-2xl font-bold leading-9 mt-10">
                 Правила отмены
               </p>
-              <p text-black text-lg mt="8px" font-normal leading-6>
+              <p className="text-black text-lg mt-2 font-normal leading-6">
                 Добавьте и подтвердите номер телефона, чтобы получать новости о
                 поездке.
               </p>
             </div>
           </div>
-          <div border-b mt="40px"></div>
-          <p text-black text="24px" font-bold leading-9 mt="40px">
+
+          <div className="border-b mt-10"></div>
+          <p className="text-black text-2xl font-bold leading-9 mt-10">
             Основные правила
           </p>
-          <p text-black text-lg mt="8px" font-normal leading-6>
-            Мы просим гостей просим придерживаться простых принципов
+          <p className="text-black text-lg mt-2 font-normal leading-6">
+            Мы просим гостей придерживаться простых принципов
           </p>
-          <ul>
-            <li mt="8px"> - Соблюдайте правила дома.</li>
-            <li mt="8px"> - Относитесь к жилью так, будто это ваш дом.</li>
+
+          <ul className="list-disc pl-6">
+            <li className="mt-2">- Соблюдайте правила дома.</li>
+            <li className="mt-2">
+              - Относитесь к жилью так, будто это ваш дом.
+            </li>
           </ul>
-          <div border-b mt="40px"></div>
+          <div className="border-b mt-10"></div>
+
           <p className="text-black text-lg not-italic font-normal leading-6 mt-[40px]">
             Rorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum, ac aliquet odio mattis. Class
@@ -552,17 +522,14 @@ export const Bron = () => {
             Потвердить и оплатить
           </Button>
         </div>
-        <div col-span-6>
+        <div className="col-span-6">
           <div className={`${stickyOrNot()} w-full `}>
             <Card className="max-w-[490px] ml-[170px]" pt="32px">
               <CardContent w-full>
-                <div flex items-center gap="16px">
+                <div className="flex items-center gap-4">
                   <div className="h-[120px]">
                     <img
-                      rounded="20px"
-                      w="120px"
-                      object-cover
-                      h-full
+                      className="rounded-[20px] w-[120px] object-cover h-full"
                       width={120}
                       src={
                         resort?.images[0]?.img ||
@@ -572,13 +539,13 @@ export const Bron = () => {
                     />
                   </div>
                   <div>
-                    <h2 text-black text-xl font-bold leading-6>
+                    <h2 className="text-black text-xl font-bold leading-6">
                       {resort?.name}
                     </h2>
-                    <p text-black text="13px" font-normal leading-6 mt="6px">
+                    <p className="text-black text-sm font-normal leading-6 mt-1.5">
                       {resort?.location_name}
                     </p>
-                    <div flex items-center gap="8px" mt="6px">
+                    <div className="flex items-center gap-2 mt-1.5">
                       <svg
                         width="20"
                         height="20"
@@ -595,62 +562,32 @@ export const Bron = () => {
                     </div>
                   </div>
                 </div>
-                <div border-b mt="24px"></div>
-                <p
-                  className="text-[24px] mt-[24px] text-[#222]"
-                  font-bold
-                  leading-9
-                >
+
+                <div className="border-b mt-6"></div>
+                <p className="text-2xl mt-6 text-gray-800 font-bold leading-9">
                   Детализация цены
                 </p>
                 <ul>
-                  <li
-                    flex
-                    items-center
-                    justify-between
-                    mt="14px"
-                    text="#222"
-                    text-lg
-                    font-normal
-                    leading-6
-                  >
-                    <span>000 000сумм х 5 ночей</span>
-                    <span>000 000 сумм</span>
+                  <li className="flex items-center justify-between mt-3.5 text-gray-800 text-lg font-normal leading-6">
+                    <span>000 000 сум х 5 ночей</span>
+                    <span>000 000 сум</span>
                   </li>
-                  <li
-                    flex
-                    items-center
-                    justify-between
-                    mt="8px"
-                    text="#222"
-                    text-lg
-                    font-normal
-                    leading-6
-                  >
+                  <li className="flex items-center justify-between mt-2 text-gray-800 text-lg font-normal leading-6">
                     <span>Сервис сбор theBron</span>
-                    <span>000 000 сумм</span>
+                    <span>000 000 сум</span>
                   </li>
-                  <li
-                    flex
-                    items-center
-                    justify-between
-                    mt="8px"
-                    text="#222"
-                    text-lg
-                    font-normal
-                    leading-6
-                  >
+                  <li className="flex items-center justify-between mt-2 text-gray-800 text-lg font-normal leading-6">
                     <span>Налоги</span>
                     <span>000 000 сумм</span>
                   </li>
                 </ul>
-                <div border-b mt="24px"></div>
-                <p flex items-center justify-between mt="24px">
-                  <span className="text-[#222] text-xl font-bold leading-7">
+                <div className="border-b mt-[24px]"></div>
+                <p className="flex items-center justify-between mt-6">
+                  <span className="text-gray-800 text-xl font-bold leading-7">
                     Итого(сум)
                   </span>
-                  <span className="text-[#222] text-xl font-bold leading-7">
-                    000 000сум
+                  <span className="text-gray-800 text-xl font-bold leading-7">
+                    000 000 сум
                   </span>
                 </p>
               </CardContent>
