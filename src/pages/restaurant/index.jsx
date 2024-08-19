@@ -75,9 +75,7 @@ const Restaurant = () => {
         <div className="col-span-4 h-[580px]">
           <LeftSide />
         </div>
-        <div className="col-span-8 rounded-lg border">
-          <ThreeDScene />
-        </div>
+        <div className="col-span-8 rounded-lg border"></div>
       </div>
       <TabsComponent foodData={foodData} />
     </div>
@@ -85,3 +83,4 @@ const Restaurant = () => {
 };
 
 export default Restaurant;
+// <ThreeDScene />
