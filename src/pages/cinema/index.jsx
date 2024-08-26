@@ -238,11 +238,10 @@ const Cinema = () => {
         {availableDates.map((item, idx) => (
           <Button
             key={idx}
-            className={`px-8 py-5 rounded-xl border-1 ${
-              selectedDateState.toDateString() === item.toDateString()
+            className={`px-8 py-5 rounded-xl border-1 ${selectedDateState.toDateString() === item.toDateString()
                 ? "bg-primary text-white hover:bg-primary border-transparent hover:text-white"
                 : "bg-white text-black"
-            }`}
+              }`}
             variant="outline"
             onClick={() => handleSelectData(item)}
           >

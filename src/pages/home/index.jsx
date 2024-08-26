@@ -175,7 +175,7 @@ const resorts = [
     id: 15,
     name: "Mountain View Resort",
     location_name: "123 Alpine St, Mountain Town, MT 56789",
-    availability_dates: [{ date: "2024-5-9" }],
+    availability_dates: [{ date: "2024-05-09" }],
     daily_price: 200,
     images: [
       "https://a0.muscache.com/im/pictures/867f3f73-d34d-4ab9-8733-f7616fed468c.jpg",
